@@ -32,7 +32,7 @@ export class ListmaterialComponent implements OnInit {
   arryuploadItemDetails=[];
   intGblId:any;
   fileLogo:any;
-
+  arryOfSemester=[];
 
   blnAllRemove=false;
   blnProfileImage =true;
@@ -98,10 +98,11 @@ export class ListmaterialComponent implements OnInit {
     await this.studymaterialsSRV.GetListById(obj).subscribe((res: any) => {
       if(res && res.data && res.data.length){
         this.studyMaterialForm.patchValue({ cmbDetailSubCategoryType:  res.data[0].fkIntCategoryId });
+        this.studyMaterialForm.patchValue({ semester:  res.data[0].fkIntSemesterId });
         this.studyMaterialForm.patchValue({ description:  res.data[0].description });
         this.fileLogo =  res.data[0].logoUrl;
         // this.studyMaterialForm.patchValue({ date: this.datepipe.transform(res.data[0].date, 'yyyy-MM-dd')});
-        this.studyMaterialForm.patchValue({ semester:  res.data[0].semester });
+        // this.studyMaterialForm.patchValue({ semester:  res.data[0].semester });
         this.studyMaterialForm.patchValue({ subject:  res.data[0].subject });
       }else{
         Swal.fire("Error!", res.message, "error");
@@ -141,6 +142,33 @@ export class ListmaterialComponent implements OnInit {
     }
 }
 
+onChange(event) {
+  // this.arryOfSemester =[];
+  console.log("lll----",event)
+  try {
+    var objData = {
+      category:event
+    }
+    this.studymaterialsSRV.get_semesterById(objData).subscribe((res: any) => {
+    console.log("get_subcategoryById------",res)
+      if (res && res.success === true) {
+        this.arryOfSemester = res.data
+        console.log("nnn---",this.arryOfSemester)
+      } else {
+        if( res.message === "Token Error"){
+          this.router.navigate( ['./admin']);
+        }
+      }
+    },(error:HttpErrorResponse) => {
+      console.log(error);
+      if( error.message === "Token Error"){
+        this.router.navigate( ['./admin']);
+      }
+  });
+  } catch (error) {
+  }
+}
+
   studymaterials(obj){
     console.log("#########----",obj)
       try {
@@ -161,13 +189,15 @@ export class ListmaterialComponent implements OnInit {
         }
         var category ={};
          category =this.arryOfData.filter(x => x.id === obj.cmbDetailSubCategoryType)[0];
-   
+         var semester ={};
+         semester =this.arryOfSemester.filter(x => x.id === obj.semester)[0];
+         console.log("ooo---",semester)
         if (this.IntmaterialId) {
           const objData = {
             _id: this.IntmaterialId,
             category : category,
             subject: obj.subject,
-            semester:obj.semester,
+            semester:semester,
             description:obj.description,
             logoUrl:this.fileLogo
           }
@@ -200,7 +230,7 @@ export class ListmaterialComponent implements OnInit {
           var addData = {
             category : category,
             subject: obj.subject,
-            semester:obj.semester,
+            semester:semester,
             description:obj.description,
             logoUrl:this.fileLogo
           }

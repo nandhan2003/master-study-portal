@@ -55,11 +55,13 @@
                       <th>No.</th>
                       <th>subject</th>
                       <th>semester</th>
+                      <th>year</th>
                     </thead>
                     <tr *ngFor="let obj of arryOfItemData;let i = index">
                       <td>{{i+1}}</td>
-                      <td> {{obj.subject}} </td>
-                      <td> {{obj.semester}} </td>
+                      <td> {{obj.subject.subject}} </td>
+                      <td> {{obj.subCategory.semester}} </td>
+                      <td> {{obj.year}} </td>
                       <td>
                          <!-- <div class="btn5" (click)="onUpdate(obj)"><i class="fa fa-pencil" aria-hidden="true"></i> -->
                           <button class="btn5" (click)="onUpdate(obj)"><i class="fa fa-pencil" aria-hidden="true"></i></button>&nbsp;

@@ -26,7 +26,13 @@ export class AddquestionService {
     .map(res => res.json())
     .catch(this.https.hamdleError);
   }
-  QuestionUpload(param: any){
+  GetAllQuestionData(param: any){
+    console.log("param=----",param)
+    return this.https.post('/api/course/getQuestionList', param )
+    .map(res => res.json())
+    .catch(this.https.hamdleError);
+  }
+  GetCourseData(param: any){
     console.log("param=----",param)
     return this.https.post('/api/course/getCourseList', param )
     .map(res => res.json())
@@ -45,6 +51,12 @@ export class AddquestionService {
   
   GetListById(value) {
     return this.https.post('/api/course/GetListIdquestionPapers', value)
+      .map(res => res.json())
+      .catch(this.https.hamdleError);
+  }
+
+  get_subjectById(value) {
+    return this.https.post('/api/course/GetListIdSubject', value)
       .map(res => res.json())
       .catch(this.https.hamdleError);
   }

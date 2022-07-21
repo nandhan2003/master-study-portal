@@ -52,12 +52,14 @@
                   <table class="table tblhead">
                     <thead>
                       <th> No.</th>
+                      <th> Category </th>
                       <th> Semester</th>
                       <th> Subject</th>
                     </thead>
                     <tr *ngFor="let obj of arryOfItemData;let i = index">
                       <td>{{i+1}}</td>
-                      <td> {{obj.semester}} </td>
+                      <td> {{obj.category.fieldName}} </td>
+                      <td> {{obj.semester.semester}} </td>
                       <td> {{obj.subject}} </td>
                       <td>
                         <!-- <div class="btn5" (click)="onUpdate(obj)"><i class="fa fa-pencil" aria-hidden="true"></i> -->

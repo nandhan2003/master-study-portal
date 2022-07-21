@@ -31,9 +31,12 @@ export class AddquestionComponent implements OnInit {
   IntquestionId:any;
   IntServiceId:any;
   intGblId:any;
-  fileLogo:any;
+  fileLogo1:any;
+  fileLogo2:any;
+  fileLogo3:any;
 
   _id:any;
+  arryOfsubject=[];
   
   blnAllRemove=false;
   blnProfileImage =true;
@@ -61,15 +64,12 @@ export class AddquestionComponent implements OnInit {
     this.addquestionForm = this.formBuilder.group({
       
       'subject': [''],
-      'year1': [''],
-      'pdf1': [''],
-      'year2': [''],
-      'pdf2': [''],
-      'year3': [''],
-      'pdf3': [''],
+      'year': [''],
+      // 'year2': [''],
+      // 'year3': [''],
       'logoUrl1': [''],
-      'logoUrl2': [''],
-      'logoUrl3': [''],
+      // 'logoUrl2': [''],
+      // 'logoUrl3': [''],
       'cmbDetailSubCategoryType':['']
 
   });  
@@ -98,9 +98,17 @@ get getControl() { return this.formUserSearch.controls;
 
 async setFunctionBookingData(obj){
 await this.AddquestionSRV.GetListById(obj).subscribe((res: any) => {
+  console.log("tttttt--------",res)
   if(res && res.data && res.data.length){
-    this.addquestionForm.patchValue({ subject:  res.data[0].subject });
-    this.addquestionForm.patchValue({ semester:  res.data[0].semester });
+    this.addquestionForm.patchValue({ cmbDetailSubCategoryType:  res.data[0].fkIntsubCategoryId });
+    this.addquestionForm.patchValue({ subject:  res.data[0].fkIntsubSubjectId });
+    this.addquestionForm.patchValue({ year:  res.data[0].year });
+    this.fileLogo1 =  res.data[0].pdf;
+    // this.addquestionForm.patchValue({ year2:  res.data[0].year2 });
+    // this.addquestionForm.patchValue({ year3:  res.data[0].year3 });
+    // this.addquestionForm.patchValue({ subject:  res.data[0].subject });
+    // this.fileLogo2 =  res.data[0].pdf2;
+    // this.fileLogo3 =  res.data[0].pdf3;
   }else{
     Swal.fire("Error!", res.message, "error");
   }
@@ -113,7 +121,7 @@ await this.AddquestionSRV.GetListById(obj).subscribe((res: any) => {
         intPageLimit: 0,
       }
 
-      this.AddquestionSRV.QuestionUpload(objData).subscribe((res: any) => {
+      this.AddquestionSRV.GetCourseData(objData).subscribe((res: any) => {
         console.log("asdhcsujb ==--",res)
         if (res && res.success === true) {
 
@@ -137,6 +145,36 @@ await this.AddquestionSRV.GetListById(obj).subscribe((res: any) => {
     } catch (error) {
     }
 }
+
+onChange(event) {
+  // this.arryOfsubject =[];
+  console.log("lll----",event)
+  try {
+    var objData = {
+      semester:event
+    }
+    this.AddquestionSRV.get_subjectById(objData).subscribe((res: any) => {
+    console.log("get_subcategoryById------",res)
+      if (res && res.success === true) {
+        this.arryOfsubject = res.data
+        console.log("nnn---",this.arryOfsubject)
+      } else {
+        if( res.message === "Token Error"){
+          this.router.navigate( ['./admin']);
+        }
+      }
+    },(error:HttpErrorResponse) => {
+      console.log(error);
+      if( error.message === "Token Error"){
+        this.router.navigate( ['./admin']);
+      }
+  });
+  } catch (error) {
+  }
+}
+
+
+
   addquestion(obj){
     console.log("values added ----",obj)
     try {
@@ -155,16 +193,30 @@ await this.AddquestionSRV.GetListById(obj).subscribe((res: any) => {
         Swal.fire("warning!", "Validators Required", "warning");
         return;
       }
-  
-      if (this._id) {
-        const obj = {
-          _id: this._id
+
+      var category ={};
+      category =this.arryOfData.filter(x => x._id === obj.cmbDetailSubCategoryType)[0];
+
+      var subject ={};
+      subject =this.arryOfsubject.filter(x => x._id === obj.subject)[0];
+       console.log("ttyy--",subject)
+      if (this.IntquestionId) {
+        const objData = {
+          _id: this.IntquestionId,
+          subCategory: category,
+          subject: subject,
+          year:obj.year,
+          // year2:obj.year2,
+          // year3:obj.year3,
+          pdf:this.fileLogo1,
+          // pdf2:this.fileLogo2,
+          // pdf3:this.fileLogo3,
         }
-        console.log("shd----", obj)
-        this.AddquestionSRV.addquestion(obj).subscribe(res => {
+        console.log("shd----", objData)
+        this.AddquestionSRV.updateQuestion(objData).subscribe(res => {
           if (res && res.success === true) {
             Swal.fire({
-              title: "Add Category!",
+              title: "Question Upload!",
               text: "Updated Successfully",
               icon: "success",
             })
@@ -186,22 +238,22 @@ await this.AddquestionSRV.GetListById(obj).subscribe((res: any) => {
           }
         });
       } else {
-        const objData = {
-          _id: obj._id,
-          subject: obj.subject,
-          year_1:obj.year_1,
-          pdf1:obj.pdf1,
-          year_2:obj.year_2,
-          pdf2:obj.pdf2,
-          year_3:obj.year_3,
-          pdf3:obj.pdf3,
+        var addData = {
+          subCategory: category,
+          subject: subject,
+          year:obj.year,
+          // year2:obj.year2,
+          // year3:obj.year3,
+          pdf:this.fileLogo1,
+          // pdf2:this.fileLogo2,
+          // pdf3:this.fileLogo3,
         }
       }
-  
-      this.AddquestionSRV.addquestion(obj).subscribe(res => {
+      console.log("gggggg------",addData)
+      this.AddquestionSRV.addquestion(addData).subscribe(res => {
         if (res && res.success === true) {
           Swal.fire({
-            title: "Add Category!",
+            title: "Question Upload!",
             text: "Updated Successfully",
             icon: "success",
           })
@@ -228,8 +280,8 @@ await this.AddquestionSRV.GetListById(obj).subscribe((res: any) => {
   
     }
 }
-getMultipleFileInfo(data) {
-  this.fileLogo="";
+getMultipleFileInfo1(data) {
+  this.fileLogo1="";
 
   try {
   this.arryuploadItemDetails=[]
@@ -268,14 +320,14 @@ finally {
   this.intTotalQueeProgress = 0;
     this.blnAllRemove = false;
 
-      this.setUploaded();
+      this.setUploaded1();
 
     this.blnProfileImage = false;
 }
 
 }
 
-setUploaded() {
+setUploaded1() {
 
   this.intTotalQueeProgress = 0;
   this.blnAllRemove = false;
@@ -306,8 +358,8 @@ setUploaded() {
       var img_body = event.body.data.fileName
 
 
-      this.fileLogo = this.img_url+'/uploads/'+img_body;
-        console.log("shafdchs =---",this.fileLogo)
+      this.fileLogo1 = this.img_url+'/uploads/'+img_body;
+        console.log("shafdchs =---",this.fileLogo1)
      
 
       }
@@ -318,6 +370,188 @@ setUploaded() {
   }
 
 }
+
+// getMultipleFileInfo2(data) {
+//   this.fileLogo2="";
+
+//   try {
+//   this.arryuploadItemDetails=[]
+//   for (let i = 0; i < data.target.files.length; i++ ) {
+
+//     this.arrayFileName.push(data.target.files[i].name)
+
+
+//       const intSize = (data.target.files[i].size / 1024) / 1024;
+//       const uploadFile = {
+//         strFileName : data.target.files[i].name,
+//         intFileSize : parseFloat(intSize.toFixed(2)),
+//         intProgress : 0,
+//         isSuccess: true,
+//         isCancel: true,
+//         isError: true,
+//         isReady: false,
+//         isUploading: false,
+//         isbtnCancel: true,
+//         isbtnRemove: true,
+//         intSizeValue: data.target.files[i].size,
+//         strType: data.target.files[i].type,
+//         files: data.target.files,
+//         intDocumentId: this.intGblId
+//       };
+
+//       this.arryuploadItemDetails.push(uploadFile);
+//       this.blnProfileImage = true;
+// }
+
+// }
+// catch(e){
+//   console.log(e);
+// }
+// finally {
+//   this.intTotalQueeProgress = 0;
+//     this.blnAllRemove = false;
+
+//       this.setUploaded2();
+
+//     this.blnProfileImage = false;
+// }
+
+// }
+
+// setUploaded2() {
+
+//   this.intTotalQueeProgress = 0;
+//   this.blnAllRemove = false;
+//   for (let i = 0; i < this.arryuploadItemDetails.length; i++ ) {
+
+
+//     if (this.arryuploadItemDetails[i].isSuccess === true ) {
+//       this.arryuploadItemDetails[i].isReady = true;
+//       this.arryuploadItemDetails[i].isbtnCancel = false;
+//       const file = this.arryuploadItemDetails[i].files[i];
+
+//       const objUpload = {
+//       file: file,
+//       };
+
+//       this.serviceSRV.uploadFiles(objUpload).subscribe((event) => {
+//       if (event.type === HttpEventType.UploadProgress) {
+//         this.arryuploadItemDetails[i].intProgress = Math.round(event.loaded / event.total * 100);
+
+//       } else if (event.type === HttpEventType.Response ) {
+//         this.arryuploadItemDetails[i].isSuccess = false;
+//         this.arryuploadItemDetails[i].isbtnCancel = true;
+//         this.arryuploadItemDetails[i].isbtnRemove = false;
+
+//     }
+//     if(event.body && event.body.success === true){
+
+//       var img_body = event.body.data.fileName
+
+
+//       this.fileLogo2 = this.img_url+'/uploads/'+img_body;
+//         console.log("shafdchs =---",this.fileLogo2)
+     
+
+//       }
+//     });
+//     } else{
+
+//     }
+//   }
+
+// }
+
+// getMultipleFileInfo3(data) {
+//   this.fileLogo3="";
+
+//   try {
+//   this.arryuploadItemDetails=[]
+//   for (let i = 0; i < data.target.files.length; i++ ) {
+
+//     this.arrayFileName.push(data.target.files[i].name)
+
+
+//       const intSize = (data.target.files[i].size / 1024) / 1024;
+//       const uploadFile = {
+//         strFileName : data.target.files[i].name,
+//         intFileSize : parseFloat(intSize.toFixed(2)),
+//         intProgress : 0,
+//         isSuccess: true,
+//         isCancel: true,
+//         isError: true,
+//         isReady: false,
+//         isUploading: false,
+//         isbtnCancel: true,
+//         isbtnRemove: true,
+//         intSizeValue: data.target.files[i].size,
+//         strType: data.target.files[i].type,
+//         files: data.target.files,
+//         intDocumentId: this.intGblId
+//       };
+
+//       this.arryuploadItemDetails.push(uploadFile);
+//       this.blnProfileImage = true;
+// }
+
+// }
+// catch(e){
+//   console.log(e);
+// }
+// finally {
+//   this.intTotalQueeProgress = 0;
+//     this.blnAllRemove = false;
+
+//       this.setUploaded3();
+
+//     this.blnProfileImage = false;
+// }
+
+// }
+
+// setUploaded3() {
+
+//   this.intTotalQueeProgress = 0;
+//   this.blnAllRemove = false;
+//   for (let i = 0; i < this.arryuploadItemDetails.length; i++ ) {
+
+
+//     if (this.arryuploadItemDetails[i].isSuccess === true ) {
+//       this.arryuploadItemDetails[i].isReady = true;
+//       this.arryuploadItemDetails[i].isbtnCancel = false;
+//       const file = this.arryuploadItemDetails[i].files[i];
+
+//       const objUpload = {
+//       file: file,
+//       };
+
+//       this.serviceSRV.uploadFiles(objUpload).subscribe((event) => {
+//       if (event.type === HttpEventType.UploadProgress) {
+//         this.arryuploadItemDetails[i].intProgress = Math.round(event.loaded / event.total * 100);
+
+//       } else if (event.type === HttpEventType.Response ) {
+//         this.arryuploadItemDetails[i].isSuccess = false;
+//         this.arryuploadItemDetails[i].isbtnCancel = true;
+//         this.arryuploadItemDetails[i].isbtnRemove = false;
+
+//     }
+//     if(event.body && event.body.success === true){
+
+//       var img_body = event.body.data.fileName
+
+
+//       this.fileLogo3 = this.img_url+'/uploads/'+img_body;
+//         console.log("shafdchs =---",this.fileLogo3)
+     
+
+//       }
+//     });
+//     } else{
+
+//     }
+//   }
+
+// }
 onCancel()
 {
   this.router.navigate(['/questionlist']);

@@ -15,9 +15,10 @@
                     <div class="col-md-4 ">
                       <div class="form-group">
                         <div class="frmpos1">
-                          <label class="lbltxt">SubCategory </label>
+                          <label class="lbltxt">Category </label>
                           <select type="text" class="form-control inputtype" formControlName="cmbDetailSubCategoryType"
-                            name="cmbDetailSubCategoryType">
+                            name="cmbDetailSubCategoryType" (change)="onChange($event.target.value)" >
+                            <option value=""> --Select Category-- </option>
                             <option *ngFor="let objvalue of arryOfData" value={{objvalue._id}}>
                               {{objvalue.fieldName}}
                             </option>
@@ -25,7 +26,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="col-md-4">
+                    <!-- <div class="col-md-4">
                       <div class="form-group">
                         <div class="frmpos1">
                           <label class="lbltxt">Semester</label>
@@ -33,7 +34,20 @@
                             placeholder="Enter Semester">
                         </div>
                       </div>
-                    </div>
+                    </div> -->
+                    <div class="col-md-4 ">
+                      <div class="form-group">
+                          <div class="frmpos1">
+                              <label class="lbltxt"> Semester </label>
+                              <select type="text" class="form-control inputtype" formControlName="semester"
+                                name="semester"  >
+                                <option value=""> --Select Semester-- </option>
+                                <option *ngFor="let objvalue of arryOfSemester" value="{{objvalue._id}}">
+                                  {{objvalue.semester}}
+                              </select>
+                          </div>
+                      </div>
+                  </div>
                     <div class="col-md-4">
                       <div class="form-group">
                         <div class="frmpos1">
@@ -51,7 +65,7 @@
                       <input formControlName="logoUrl" name="logoUrl" type="file" #fileInput
                         class='form-control' (change)="getMultipleFileInfo($event)">
                       <tr *ngIf="fileLogo">
-                        <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+                        <td> <img class="imgicon" src="{{fileLogo}}" onerror="src='../../../assets/dist/img/docorpdf.png';" alt=""></td>
                       </tr>
                     </div>
                   </div>

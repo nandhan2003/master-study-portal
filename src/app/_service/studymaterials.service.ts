@@ -50,4 +50,11 @@ GetListById(value) {
     .map(res => res.json())
     .catch(this.https.hamdleError);
 }
+
+get_semesterById(value) {
+  return this.https.post('/api/course/GetSemesterListById', value)
+    .map(res => res.json())
+    .catch(this.https.hamdleError);
+}
+
 }

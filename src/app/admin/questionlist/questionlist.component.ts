@@ -81,7 +81,7 @@ export class QuestionlistComponent implements OnInit {
         
       }
       console.log("objData=----",objData)
-      this.AddquestionSRV.QuestionUpload(objData).subscribe((res: any) => {
+      this.AddquestionSRV.GetAllQuestionData(objData).subscribe((res: any) => {
         console.log("rea=----",res)
         if (res && res.success === true) {
 

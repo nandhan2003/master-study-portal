@@ -15,20 +15,20 @@
                     <div class="col-md-4">
                       <label class="lbltxt"> Material </label>
                       <div class="input-group">
-                        <input formControlName="logoUrl" name="Material" type="file"  #fileInput
-                          class='form-control' (change)="getMultipleFileInfo($event)">
-                        <tr *ngIf="fileLogo">
-                          <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+                        <input formControlName="logoUrl1" name="Material" type="file"  #fileInput
+                          class='form-control' (change)="getMultipleFileInfo1($event)">
+                        <tr *ngIf="fileLogo1">
+                          <td> <img class="imgicon" src="{{fileLogo1}}" onerror="src='../../../assets/dist/img/docorpdf.png';" alt=""></td>
                         </tr>
                       </div>
                     </div>
                   <div class="col-md-4">
                     <label class="lbltxt"> QuestionPaper </label>
                     <div class="input-group">
-                      <input formControlName="logoUrl" name="QuestionPaper" type="file" #fileInput
-                        class='form-control' (change)="getMultipleFileInfo($event)">
-                      <tr *ngIf="fileLogo">
-                        <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+                      <input formControlName="logoUrl2" name="QuestionPaper" type="file" #fileInput
+                        class='form-control' (change)="getMultipleFileInfo2($event)">
+                      <tr *ngIf="fileLogo2">
+                        <td> <img class="imgicon" src="{{fileLogo2}}" onerror="src='../../../assets/dist/img/docorpdf.png';" alt=""></td>
                       </tr>
                     </div>
                   </div>

@@ -19,7 +19,8 @@
                       <div class="frmpos1">
                           <label  class="lbltxt">SubCategory </label>
                           <select type="text" class="form-control inputtype" formControlName="cmbDetailSubCategoryType"
-                          name="cmbDetailSubCategoryType"> 
+                          name="cmbDetailSubCategoryType" (change)="onChange($event.target.value)"> 
+                          <option value=""> --Select Category-- </option>
                             <option *ngFor="let objvalue of arryOfData" value={{objvalue._id}}>
                             {{objvalue.semester}}
                             </option>
@@ -27,7 +28,7 @@
                       </div>
                   </div>
               </div>
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                   <div class="form-group">
                     <div class="frmpos1">
                       <label class="lbltxt">Subject </label>
@@ -35,17 +36,30 @@
                         placeholder="Enter Your Subject">
                     </div>
                   </div>
-                </div>
+                </div> -->
+                <div class="col-md-4 ">
+                  <div class="form-group">
+                      <div class="frmpos1">
+                          <label class="lbltxt"> Subject </label>
+                          <select type="text" class="form-control inputtype" formControlName="subject"
+                            name="subject"  >
+                            <option value=""> --Select subject-- </option>
+                            <option *ngFor="let objvalue of arryOfsubject" value="{{objvalue._id}}">
+                              {{objvalue.subject}}
+                          </select>
+                      </div>
+                  </div>
+              </div>
                 <div class="col-md-4">
                   <div class="form-group">
                     <div class="frmpos1">
-                      <label class="lbltxt"> Year3</label>
-                      <input type="number" class="form-control inputtype" formControlName="year3"
+                      <label class="lbltxt">Year</label>
+                      <input type="number" class="form-control inputtype" formControlName="year"
                         placeholder="Enter Year">
                     </div>
                   </div>
                 </div>
-                <div class="col-md-4 ">
+                <!-- <div class="col-md-4 ">
                   <div class="form-group">
                     <div class="frmpos1">
                       <label class="lbltxt"> Year1</label>
@@ -67,24 +81,24 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div class="col-md-4 ">
-                  <label class="lbltxt"> PDF 3</label>
+                  <label class="lbltxt"> PDF</label>
                   <div class="input-group">
                     <input formControlName="logoUrl1" name="logoUrl1" type="file" #fileInput
-                      class='form-control' (change)="getMultipleFileInfo($event)">
-                    <tr *ngIf="fileLogo">
-                      <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+                      class='form-control' (change)="getMultipleFileInfo1($event)">
+                    <tr *ngIf="fileLogo1">
+                      <td> <img class="imgicon" src="{{fileLogo1}}"  onerror="src='../../../assets/dist/img/docorpdf.png';" alt=""></td>
                     </tr>
                   </div>
                 </div>
-               <div class="col-md-4 ">
+               <!-- <div class="col-md-4 ">
                   <label class="lbltxt">PDF 1 </label>
                   <div class="input-group">
                     <input formControlName="logoUrl2" name="logoUrl2" type="file" #fileInput
-                      class='form-control' (change)="getMultipleFileInfo($event)">
-                    <tr *ngIf="fileLogo">
-                      <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+                      class='form-control' (change)="getMultipleFileInfo2($event)">
+                    <tr *ngIf="fileLogo2">
+                      <td> <img class="imgicon" src="{{fileLogo2}}"  onerror="src='../../../assets/dist/img/docorpdf.png';" alt=""></td>
                     </tr>
                   </div>
                 </div>
@@ -93,12 +107,12 @@
             <label class="lbltxt"> PDF 2 </label>
             <div class="input-group">
               <input formControlName="logoUrl3" name="logoUrl3" type="file" #fileInput
-                class='form-control' (change)="getMultipleFileInfo($event)">
-              <tr *ngIf="fileLogo">
-                <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+                class='form-control' (change)="getMultipleFileInfo3($event)">
+              <tr *ngIf="fileLogo3">
+                <td> <img class="imgicon" src="{{fileLogo3}}"  onerror="src='../../../assets/dist/img/docorpdf.png';" alt=""></td>
               </tr>
             </div>
-          </div>
+          </div> -->
               </div>
             </form>
           </div>

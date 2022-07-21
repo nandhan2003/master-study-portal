@@ -27,7 +27,8 @@ export class NetmaterialsComponent implements OnInit {
   intGlblUserId:any;
   IntServiceId:any;
   intGblId:any;
-  fileLogo:any;
+  fileLogo1:any;
+  fileLogo2:any;
   _id:any;
   IntNetId:any;
 
@@ -48,12 +49,13 @@ export class NetmaterialsComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.getAllList()
+    // this.getAllList()
     this.netForm = this.formBuilder.group({
       'material': [''],
       'questionPaper': [''],
       'videoLink': [''],
-      'logoUrl': [],
+      'logoUrl1': [],
+      'logoUrl2': [],
       
     });
  
@@ -82,47 +84,47 @@ export class NetmaterialsComponent implements OnInit {
 
   async setFunctionBookingData(obj){
     await this.NetSRV.GetListById(obj).subscribe((res: any) => {
+      console.log("yyyy--",res)
       if(res && res.data && res.data.length){
-        // this.netForm.patchValue({ cmbDetailServiceType:  res.data[0].objService._id });
-        // this.netForm.patchValue({ date: this.datepipe.transform(res.data[0].date, 'yyyy-MM-dd')});
-        this.netForm.patchValue({ material:  res.data[0].material });
-        this.netForm.patchValue({ questionPaper:  res.data[0].address });
+        this.fileLogo1 = res.data[0].material ;
+        this.fileLogo2 = res.data[0].questionPaper ;
         this.netForm.patchValue({ videoLink:  res.data[0].videoLink });
       }else{
         Swal.fire("Error!", res.message, "error");
       }
     })
   }
-  getAllList() {
-    try {
-      var objData = {
-        intSkipCount: 0,
-        intPageLimit: 0,
-      }
+//   getAllList() {
+//     try {
+//       var objData = {
+//         intSkipCount: 0,
+//         intPageLimit: 0,
+//       }
 
-      this.NetSRV.AddMaterials(objData).subscribe((res: any) => {
-        console.log("asdhcsujb ==--",res)
-        if (res && res.success === true) {
+//       this.NetSRV.AddMaterials(objData).subscribe((res: any) => {
+//         console.log("asdhcsujb ==--",res)
+//         if (res && res.success === true) {
 
-          this.arryOfData = res.data
-          console.log("arryOfData =----",this.arryOfData)
+//           this.arryOfData = res.data
+//           console.log("arryOfData =----",this.arryOfData)
         
-        } else {
-          this.arryOfData = [];
-          if( res.message === "Token Error"){
-            this.router.navigate( ['./admin']);
-          }
-        }
-      },(error:HttpErrorResponse) => {
+//         } else {
+//           this.arryOfData = [];
+//           if( res.message === "Token Error"){
+//             this.router.navigate( ['./admin']);
+//           }
+//         }
+//       },(error:HttpErrorResponse) => {
 
-        console.log(error);
-        if( error.message === "Token Error"){
-          this.router.navigate( ['./admin']);
-        }
-    });
-    } catch (error) {
-    }
-}
+//         console.log(error);
+//         if( error.message === "Token Error"){
+//           this.router.navigate( ['./admin']);
+//         }
+//     });
+//     } catch (error) {
+//     }
+// }
+
 net(obj){
     console.log("values added ----",obj)
     try {
@@ -142,15 +144,18 @@ net(obj){
         return;
       }
   
-      if (this._id) {
-        const obj = {
-          _id: this._id
+      if (this.IntNetId) {
+        const objData = {
+          _id: this.IntNetId,
+          material: this.fileLogo1,
+          questionPaper:this.fileLogo2,
+          videoLink:obj.videoLink
         }
-        console.log("shd----", obj)
-        this.NetSRV.net(obj).subscribe(res => {
+        console.log("shd----", objData)
+        this.NetSRV.UpdateNet(objData).subscribe(res => {
           if (res && res.success === true) {
             Swal.fire({
-              title: "Add Category!",
+              title: "NET Materials!",
               text: "Updated Successfully",
               icon: "success",
             })
@@ -172,18 +177,17 @@ net(obj){
           }
         });
       } else {
-        var objData = {
-          _id: obj._id,
-          material: obj.material,
-          questionPaper:obj.questionPaper,
+        var addData = {
+          material: this.fileLogo1,
+          questionPaper:this.fileLogo2,
           videoLink:obj.videoLink
         }
       }
   
-      this.NetSRV.net(objData).subscribe(res => {
+      this.NetSRV.net(addData).subscribe(res => {
         if (res && res.success === true) {
           Swal.fire({
-            title: "Add Category!",
+            title: "NET Materials!",
             text: "Updated Successfully",
             icon: "success",
           })
@@ -210,8 +214,8 @@ net(obj){
   
     }
 }
-getMultipleFileInfo(data) {
-  this.fileLogo="";
+getMultipleFileInfo1(data) {
+  this.fileLogo1="";
 
   try {
   this.arryuploadItemDetails=[]
@@ -250,14 +254,14 @@ finally {
   this.intTotalQueeProgress = 0;
     this.blnAllRemove = false;
 
-      this.setUploaded();
+      this.setUploaded1();
 
     this.blnProfileImage = false;
 }
 
 }
 
-setUploaded() {
+setUploaded1() {
 
   this.intTotalQueeProgress = 0;
   this.blnAllRemove = false;
@@ -288,8 +292,8 @@ setUploaded() {
       var img_body = event.body.data.fileName
 
 
-      this.fileLogo = this.img_url+'/uploads/'+img_body;
-        console.log("shafdchs =---",this.fileLogo)
+      this.fileLogo1 = this.img_url+'/uploads/'+img_body;
+        console.log("shafdchs =---",this.fileLogo1)
      
 
       }
@@ -300,6 +304,98 @@ setUploaded() {
   }
 
 }
+
+getMultipleFileInfo2(data) {
+  this.fileLogo2="";
+
+  try {
+  this.arryuploadItemDetails=[]
+  for (let i = 0; i < data.target.files.length; i++ ) {
+
+    this.arrayFileName.push(data.target.files[i].name)
+
+
+      const intSize = (data.target.files[i].size / 1024) / 1024;
+      const uploadFile = {
+        strFileName : data.target.files[i].name,
+        intFileSize : parseFloat(intSize.toFixed(2)),
+        intProgress : 0,
+        isSuccess: true,
+        isCancel: true,
+        isError: true,
+        isReady: false,
+        isUploading: false,
+        isbtnCancel: true,
+        isbtnRemove: true,
+        intSizeValue: data.target.files[i].size,
+        strType: data.target.files[i].type,
+        files: data.target.files,
+        intDocumentId: this.intGblId
+      };
+
+      this.arryuploadItemDetails.push(uploadFile);
+      this.blnProfileImage = true;
+}
+
+}
+catch(e){
+  console.log(e);
+}
+finally {
+  this.intTotalQueeProgress = 0;
+    this.blnAllRemove = false;
+
+      this.setUploaded2();
+
+    this.blnProfileImage = false;
+}
+
+}
+
+setUploaded2() {
+
+  this.intTotalQueeProgress = 0;
+  this.blnAllRemove = false;
+  for (let i = 0; i < this.arryuploadItemDetails.length; i++ ) {
+
+
+    if (this.arryuploadItemDetails[i].isSuccess === true ) {
+      this.arryuploadItemDetails[i].isReady = true;
+      this.arryuploadItemDetails[i].isbtnCancel = false;
+      const file = this.arryuploadItemDetails[i].files[i];
+
+      const objUpload = {
+      file: file,
+      };
+
+      this.serviceSRV.uploadFiles(objUpload).subscribe((event) => {
+      if (event.type === HttpEventType.UploadProgress) {
+        this.arryuploadItemDetails[i].intProgress = Math.round(event.loaded / event.total * 100);
+
+      } else if (event.type === HttpEventType.Response ) {
+        this.arryuploadItemDetails[i].isSuccess = false;
+        this.arryuploadItemDetails[i].isbtnCancel = true;
+        this.arryuploadItemDetails[i].isbtnRemove = false;
+
+    }
+    if(event.body && event.body.success === true){
+
+      var img_body = event.body.data.fileName
+
+
+      this.fileLogo2 = this.img_url+'/uploads/'+img_body;
+        console.log("shafdchs =---",this.fileLogo2)
+     
+
+      }
+    });
+    } else{
+
+    }
+  }
+
+}
+
 onCancel()
 {
   this.router.navigate(['/netquestion']);
