@@ -1,0 +1,22 @@
+  section{
+    background: radial-gradient(#653d84, #332042);
+    height: 628px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    }
+    table{
+    height: 540px;
+    border-collapse: collapse;
+    border: 1px solid white;
+    margin-top:70px;
+    margin-left: 70px;
+    margin-right: 70px;
+    margin-bottom: 150px;
+    background:radial-gradient(#936ab3, #4a345a) ;
+  }
+    tr,th,td{
+    border-collapse: collapse;
+    border: 1px solid white;
+    text-align: center;
+  }

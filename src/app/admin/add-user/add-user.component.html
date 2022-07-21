@@ -1,0 +1,176 @@
+<div class="main-content ">
+    <div class="container-fluid ">
+
+
+        <div class="row topserch">
+            <div class="col-md-12 ">
+
+                <div class="card ">
+                    <div class="cardHedr">
+                        <div class="row pull-left">
+                            <button class="btn3" (click)="onCancel()">BACK</button>
+                        </div>
+                        Users
+                        <div class="pull-right">
+                            <!-- <button  class="btn2" (click)="onCreate()">Create User</button> -->
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form [formGroup]="UserForm">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> First Name </label>
+                                            <input type="text" class="form-control inputtype" formControlName="firstName"
+                                                placeholder="Enter Your Full Name">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Last Name</label>
+                                            <input type="text" class="form-control inputtype" formControlName="lastName"
+                                                placeholder="Enter Your Last Name">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Gender </label>
+                                            <select type="text" class="form-control inputtype" formControlName="gender"
+                                                name="gender">
+                                                <option value=""> --Select Gender-- </option>
+                                                <option value="Male"> Male </option>
+                                                <option value="Female"> Female </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <!-- <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Date of birth </label>
+                                            <input type="date" class="form-control inputtype" formControlName="dob"
+                                                placeholder="Enter Your date of birth">
+
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> User Name<span class="text-danger bold">*</span>
+                                            </label>
+                                            <input type="text" class="form-control inputtype" formControlName="userName"
+                                                placeholder="Enter Your User Name"
+                                                [ngClass]="{ 'status-danger': getControl.userName.invalid }">
+                                            <div *ngIf="getControl.userName.touched && getControl.userName.invalid"
+                                                class="text-danger">
+                                                <div *ngIf="getControl.userName.errors.required">User name is required.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Mobile<span class="text-danger bold">*</span>
+                                            </label>
+                                            <input type="text" class="form-control inputtype" formControlName="mobile"
+                                                placeholder="Enter Your Mobile Number"
+                                                [ngClass]="{ 'status-danger': getControl.mobile.invalid }">
+                                            <div *ngIf="getControl.mobile.touched && getControl.mobile.invalid"
+                                                class="text-danger">
+                                                <div *ngIf="getControl.mobile.errors.required">Mobile number is
+                                                    required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Email<span class="text-danger bold">*</span> </label>
+                                            <input type="email" class="form-control inputtype" formControlName="email"
+                                                placeholder="Enter Your Email"
+                                                [ngClass]="{ 'status-danger': getControl.email.invalid }">
+                                            <div *ngIf="getControl.email.touched && getControl.email.invalid"
+                                                class="text-danger">
+                                                <div *ngIf="getControl.email.errors.required">Email is required.</div>
+                                            </div>
+                                            <div style="color: red;" *ngIf="Email.errors?.email">
+                                                Email not valid.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label> Password<span class="text-danger bold">*</span> </label>
+                                            <input type="password" class="form-control inputtype"
+                                                formControlName="password" placeholder=" Enter Your  password"
+                                                [ngClass]="{ 'status-danger': getControl.password.invalid }">
+                                            <div class="errors"
+                                                *ngIf="UserForm.get('password').invalid && (UserForm.get('password').touched || UserForm.get('password').dirty)">
+                                                <div *ngIf="UserForm.get('password').hasError('required')">
+                                                    password is required
+                                                </div>
+                                                <div *ngIf="UserForm.get('password').errors.minlength">
+                                                    Password must be at least 8 characters
+                                                </div>
+                                                <!-- <div class="error-text" *ngIf="UserForm.get('password').hasError('passwordStrength')">
+                                                    {{UserForm.get('password').errors['passwordStrength']}}
+                                                </div> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label> Pre Password<span class="text-danger bold">*</span> </label>
+                                            <input type="password" class="form-control inputtype"
+                                                formControlName="prePassword" placeholder=" Enter Your Pre Password"
+                                                [ngClass]="{ 'status-danger': getControl.prePassword.invalid }">
+                                            <div class="errors"
+                                                *ngIf="UserForm.get('prePassword').invalid && (UserForm.get('prePassword').touched || UserForm.get('prePassword').dirty)">
+                                                <div *ngIf="UserForm.get('prePassword').hasError('required')">
+                                                    prePassword is required
+                                                </div>
+                                                <div *ngIf="UserForm.get('prePassword').errors.minlength">
+                                                    prePassword must be at least 8 characters
+                                                </div>
+                                                <div class="error-text"
+                                                    *ngIf="UserForm.get('prePassword').hasError('passwordStrength')">
+                                                    {{UserForm.get('prePassword').errors['passwordStrength']}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12 pull-right">
+                                    <div class="row pull-right">
+                                        <button class="btn1" (click)="createUser(UserForm.value)">Register</button>
+                                    </div>
+                                    <div class="row pull-right">
+                                        <button class="btn0" (click)="onCancel()">Cancel</button>
+                                    </div>
+                                   
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

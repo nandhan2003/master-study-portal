@@ -1,0 +1,117 @@
+<div class="main-content ">
+  <div class="container-fluid ">
+    <div class="row topserch">
+      <div class="col-md-12 ">
+        <div class="card ">
+          <div class="cardHedr">
+            <div class="row pull-left">
+              <button class="btn3"(click)="onCancel()">BACK</button>
+          </div>
+            AddQuestions
+            <div class="pull-right">
+            </div>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="addquestionForm">
+              <div class="row">
+                <div class="col-md-4 ">
+                  <div class="form-group">
+                      <div class="frmpos1">
+                          <label  class="lbltxt">SubCategory </label>
+                          <select type="text" class="form-control inputtype" formControlName="cmbDetailSubCategoryType"
+                          name="cmbDetailSubCategoryType"> 
+                            <option *ngFor="let objvalue of arryOfData" value={{objvalue._id}}>
+                            {{objvalue.semester}}
+                            </option>
+                          </select>
+                      </div>
+                  </div>
+              </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <div class="frmpos1">
+                      <label class="lbltxt">Subject </label>
+                      <input type="search" class="form-control inputtype" formControlName="subject"
+                        placeholder="Enter Your Subject">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <div class="frmpos1">
+                      <label class="lbltxt"> Year3</label>
+                      <input type="number" class="form-control inputtype" formControlName="year3"
+                        placeholder="Enter Year">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="form-group">
+                    <div class="frmpos1">
+                      <label class="lbltxt"> Year1</label>
+                      <input type="number" class="form-control inputtype" formControlName="year1"
+                        placeholder="Enter Year">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <div class="row">
+                    <div class="col-md-4 ">
+                      <div class="form-group">
+                        <div class="frmpos1">
+                          <label class="lbltxt">Year2
+                          </label>
+                          <input type="number" class="form-control inputtype" formControlName="year2"
+                            placeholder="Enter Year">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 ">
+                  <label class="lbltxt"> PDF 3</label>
+                  <div class="input-group">
+                    <input formControlName="logoUrl1" name="logoUrl1" type="file" #fileInput
+                      class='form-control' (change)="getMultipleFileInfo($event)">
+                    <tr *ngIf="fileLogo">
+                      <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+                    </tr>
+                  </div>
+                </div>
+               <div class="col-md-4 ">
+                  <label class="lbltxt">PDF 1 </label>
+                  <div class="input-group">
+                    <input formControlName="logoUrl2" name="logoUrl2" type="file" #fileInput
+                      class='form-control' (change)="getMultipleFileInfo($event)">
+                    <tr *ngIf="fileLogo">
+                      <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+                    </tr>
+                  </div>
+                </div>
+
+          <div class="col-md-4 ">
+            <label class="lbltxt"> PDF 2 </label>
+            <div class="input-group">
+              <input formControlName="logoUrl3" name="logoUrl3" type="file" #fileInput
+                class='form-control' (change)="getMultipleFileInfo($event)">
+              <tr *ngIf="fileLogo">
+                <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+              </tr>
+            </div>
+          </div>
+              </div>
+            </form>
+          </div>
+        <div class="col-md-12 pull-right">
+          
+          <div class="row pull-right">
+              <button class="btn1"(click)="addquestion(addquestionForm.value)">SUBMIT</button>
+          </div>
+          <div class="row pull-right">
+            <button class="btn0"(click)="onCancel()">Cancel</button>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>

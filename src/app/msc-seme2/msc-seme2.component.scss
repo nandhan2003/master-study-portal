@@ -1,0 +1,36 @@
+@import '../../assets/style.scss';
+.view,.dwn{
+  padding: 5px 10px;
+  border-radius: 3px;
+  background-color: darkblue;
+  color: #ffffff;
+  float: right;
+}
+.dwn{
+  margin: right 30px; ;
+}
+.sub-title{
+  margin-top: 30px;
+  position: relative;
+  border-radius: 3px; 
+  padding: 35px 0 30px;
+  text-transform: capitalize;
+  transition: all 500ms ease;
+  color: #ffffff;
+  background: #13315a;
+  width:80%;
+  text-align: center;
+}
+table{
+  margin-bottom: 10%;
+  margin-left: 10%;
+
+}
+.pos{
+  justify-content: center;
+  display: flex;
+}
+th,td{
+  font-size: 20px;
+  text-align: center;
+}

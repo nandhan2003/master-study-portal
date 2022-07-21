@@ -1,0 +1,23 @@
+<div class="main">
+  <div class="col-md-12 ">
+    <form [formGroup]="LoginForm">
+      <div class="col-md-4">
+        <h3>ADMIN LOGIN</h3>
+        <label style="color:black;">USERNAME</label>
+        <input type="text" formControlName="username" placeholder=" Enter Your Name">
+      </div>
+      <div class="col-md-4">
+        <label style="color:black;" class="email"> E-MAIL</label>
+        <input type="email" formControlName="email" placeholder="Enter Your Email">
+      </div>
+
+      <div class="col-md-4">
+        <label style="color:black;"> PASSWORD</label>
+        <input type="password" formControlName="password" placeholder=" Enter Your  password">
+      </div>
+    </form>
+    <div class="lbl">
+      <button (click)="login(LoginForm.value)">LOGIN</button>
+    </div>
+  </div>
+</div>

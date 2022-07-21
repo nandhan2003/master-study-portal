@@ -1,0 +1,137 @@
+.topic-block .inner-box {
+  position: relative;
+  padding: 20px 20px;
+  text-align: center;
+  background-color: powderblue;
+  box-shadow: 0px 0px 15px rgb(0 0 0 / 10%);
+  
+}
+.topic-block {
+  position: relative;
+  margin-bottom: 30px;
+}
+/* .topic-block .inner-box .overlay-link {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+} */
+.topic-block .inner-box .text {
+  position: relative;
+  line-height: 1.8em;
+  color: #626262;
+  margin-top: 15px;
+  margin-bottom: 25px;
+  display: table-row-group;
+  padding: 24px 24px;
+
+  
+}
+.topic-block .inner-box .overlay-link {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  padding: 24px 24px;
+}
+a {
+  color:rgb(0, 128, 122);
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+.auto-container {
+  position: static;
+  max-width: 1200px;
+  padding: 0px 15px;
+  margin: 50px auto;
+  display: flex;
+
+}
+ 
+/* * {
+  margin: 0px;
+  padding: 0px;
+  border: none;
+  outline: none;
+} */
+*, ::after, ::before {
+  box-sizing: content-box;
+}
+user agent stylesheet
+div {
+ display: block;
+ box-sizing: border-box;
+}
+user agent stylesheet
+div {
+display: block;
+}
+h2{
+color:rgb(0, 128, 122);
+line-height: 1.2em;
+font-weight: 700;
+font-size: 40px;
+margin-top: 40px;
+margin-left: 15px;
+margin-bottom: 40px;
+font-family: 'Poppins', sans-serif;
+}
+.text{
+ color:rgba(39, 37, 37, 0.726);
+ margin-left: 40px;
+ margin-right:40px ;
+ text-align: center;
+ margin-bottom: 50px;
+}
+.col-md-3{
+width:37%;
+display:flexbox;
+height:100%;
+
+}
+.row{
+ text-align: center;
+ justify-content: center;
+ display: flex;
+}
+.icon-box{
+  position: relative;
+  width: 80px;
+  height: 80px;
+  /* color: #03382e; */
+  font-size: 36px;
+  margin: 0 auto;
+  border-radius: 5px;
+  line-height: 85px;
+  text-align: center;
+  background-color: #d2f2f8;
+}
+.head{
+  position: relative;
+  font-weight: 600;
+  line-height: 1.3em;
+  margin-top: 30px;
+}
+.angle-btn{
+  position: relative;
+    font-size: 16px;
+    line-height: 30px;
+    color: #ffffff;
+    padding: 12px 44px 12px;
+    font-weight: 400;
+    overflow: hidden;
+    background: none;
+    border-radius: 50px;
+    background-color:#075e89;
+    text-transform: capitalize;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 10px 30px rgb(0 171 21 / 10%);
+    border: none;
+}
+.btn2{
+  text-align:center;
+  margin-top: 30px;
+}

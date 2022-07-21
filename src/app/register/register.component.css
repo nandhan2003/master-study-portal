@@ -1,0 +1,26 @@
+.login {
+  min-height: 100vh;
+  background-color:#583672;
+}
+
+.bg-image {
+  /* background-image:url(../../assets/dist/img/study.jpg); */
+  background-size: cover;
+  background-position: center;
+}
+
+.login-heading {
+  font-weight: 300;
+  text-align: center;
+}
+
+.btn-login {
+  font-size: 0.9rem;
+  letter-spacing: 0.05rem;
+  padding: 0.75rem 1rem;
+  background-color:rgb(148, 17, 148);
+}
+
+.link-signup {
+  text-align: center;
+}

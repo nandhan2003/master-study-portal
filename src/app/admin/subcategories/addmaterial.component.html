@@ -1,0 +1,130 @@
+<!-- <div class="main-content ">
+  <div class="container-fluid ">
+    <div class="row topserch">
+      <div class="col-md-12 ">
+        <div class="card ">
+          <div class="cardHedr">
+            Subcategories
+            <div class="pull-right">
+              <div class="card-body">
+                <form [formGroup]="addMaterialForm">
+                  <div class="row ">
+                    <div class="col-md-6">
+                      <div class="col-md-4 ">
+                        <div class="form-group">
+                            <div class="frmpos1">
+                                <label style="width: 200px;" class="lbltxt">Category </label>
+                                <select type="text" class="form-control inputtype" formControlName="cmbDetailServiceType"
+                                name="cmbDetailServiceType"  > 
+                                  <option value="msc">MSC</option>
+                                  <option value="mca">MCA</option>
+                                  <option value="question">QUESTION PAPERS</option>
+                                  <option value="net">NET:STUDY MAYERIALS</option>
+                                  <option *ngFor="let objvalue of arryallServiceData" value={{objvalue._id}}>
+                                  {{objvalue.serviceName}}
+                                  </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                  
+                    <div class="row ">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <div class="frmpos1">
+                          <label class="lbltxt">Semester</label>
+                          <input type="text" class="form-control inputtype" formControlName="Semester"
+                            placeholder="Enter Semester">
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                  <div class="col-md-12 pull-right">
+                    <div class="row pull-right">
+                        <button style="margin-bottom: 20px;" class="btn1"(click)="addMaterial(addMaterialForm.value)">SUBMIT</button>
+                    </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="main-content ">
+  <div class="container-fluid ">
+    
+      <div class="row topserch">
+          <div class="col-md-12 ">
+            
+              <div class="card " >
+                  <div class="cardHedr" >
+                    <div class="row pull-left">
+                      <button class="btn3"(click)="onCancel()">BACK</button>
+                  </div>
+                      Add SubCategory
+                      <div class="pull-right">
+                        <!-- <button  class="btn2" (click)="onCreate()">Create User</button> -->
+                      </div>
+                    </div>
+                  <div class="card-body " >
+                      <form [formGroup]="addMaterialForm" >
+                          <div class="row">
+
+                            <div class="col-md-4 ">
+                              <div class="form-group">
+                                  <div class="frmpos1">
+                                      <label  class="lbltxt">Category </label>
+                                      <select type="text" class="form-control inputtype" formControlName="cmbDetailCategoryType"
+                                      name="cmbDetailCategoryType"> 
+                                      <option value=""> --Select Category-- </option>
+                                        <option *ngFor="let objvalue of arryOfData" value={{objvalue._id}}>
+                                        {{objvalue.fieldName}}
+                                        </option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <div class="frmpos1">
+                                <label class="lbltxt">Semester</label>
+                                <input type="text" class="form-control inputtype" formControlName="semester"
+                                  placeholder="Enter Semester">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-4">
+                            <div class="form-group">
+                              <div class="frmpos1">
+                                <label class="lbltxt">Description</label>
+                                <textarea type="text-area" class="form-control inputtype" formControlName="description"
+                                  placeholder="Enter Description"></textarea>
+                              </div>
+                            </div>
+                          </div>
+                              <div class="col-md-12 pull-right">
+                            
+                                  <div class="row pull-right">
+                                      <button  class="btn1" (click)="addMaterial(addMaterialForm.value)">Submit</button>
+                                  </div>
+                                  <div class="row pull-right">
+                                    <button class="btn0"(click)="onCancel()">Cancel</button>
+                                </div>
+                                  <!-- <div class="row pull-right">
+                                      <button  class="btn2" (click)="createUser(ServiceForm.value)">Cancel</button>
+                                  </div> -->
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

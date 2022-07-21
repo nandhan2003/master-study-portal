@@ -1,0 +1,76 @@
+<div class="main-content ">
+    <div class="container-fluid ">
+      
+
+        <div class="row topserch">
+            <div class="col-md-12 ">
+              
+                <div class="card " >
+                    <div class="cardHedr" >
+                      Booking
+                        <div class="pull-right">
+                          <!-- <button  class="btn2" (click)="onCreate()">Create User</button> -->
+                        </div>
+                      </div>
+                    <div class="card-body " >
+                        <form [formGroup]="bookingForm" >
+
+                            <div class="row">
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Service Name </label>
+                                            <select type="text" class="form-control inputtype" formControlName="cmbDetailServiceType"
+                                            name="cmbDetailServiceType"  >
+                                              <option value=""> --Select Service-- </option>
+                                              <option *ngFor="let objvalue of arryallServiceData" value={{objvalue._id}}>
+                                              {{objvalue.serviceName}}
+                                              </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Date </label>
+                                            <input type="date" class="form-control inputtype" formControlName="date" />
+                                            <!-- <div *ngIf="getControl.email.touched && getControl.email.invalid" class="text-danger">
+                                                <div *ngIf="getControl.email.errors.required">Email is required.</div>
+                                            </div> -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 ">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Time<span class="text-danger bold"></span> </label>
+                                            <input type="time" class="form-control inputtype" formControlName="time">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 ">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt">Address<span class="text-danger bold"></span> </label>
+                                            <textarea type="Address" class="form-control inputtype" formControlName="address"
+                                            placeholder="Enter Your Address"  ></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 pull-right">
+                                    <div class="row pull-right">
+                                    <button  class="btn1" (click)="createUser(bookingForm.value)">Submit</button>
+                                    <!--  -->
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+ h3{
+      font-family: system-ui;
+      color: ivory;
+      margin-bottom: 40px;
+      margin-top: 200px;
+      font-weight: bold;
+      margin-right: 150px;
+}
+form{
+      font-family: system-ui;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      cursor: zoom-in;
+      align-content: center;
+      margin-left: 100px;
+}
+.minbox{
+      height: 628px;
+      display: flex;
+      flex-direction: column;
+      background: radial-gradient(#653d84, #332042);
+    
+}
+    

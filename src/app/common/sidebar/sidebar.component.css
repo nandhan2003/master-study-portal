@@ -1,0 +1,48 @@
+
+
+.sidebarDark {
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.sidebarActive {
+    background-color: #000000;
+}
+
+.hand {
+    cursor: pointer;
+}
+
+.logo a, .logo {
+    background-color:   #6e6e6e;
+    color: #fff;
+}
+
+.sidebar[data-background-color="blueblack"] {
+    background-color: #6e6e6e;
+}
+
+.sidebar[data-color="white"] li a {
+    color: rgb(255, 255, 255);
+}
+
+.sidebar[data-color="white"] li.active>a > i{
+    color: #000000;
+    background-color: #ffffff;
+    text-align:center;
+    margin-top: -5px;
+    /* height: 40px; */
+}
+.sidebar[data-color="white"] li.active>a {
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    height: 40px;
+}
+
+.sidebar .nav p {
+    margin-top: -5px;
+}
+
+.imgicon{
+    width: 30px;
+}

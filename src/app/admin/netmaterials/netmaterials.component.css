@@ -1,0 +1,83 @@
+.topserch{
+  margin-top: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.lbl{
+color: black;
+}
+.inputtype {
+border-radius: 5px;
+height: calc(2rem + 2px);
+width: 150px;
+font-size: 14px;
+/* margin-right: 700px; */
+}
+.imgicon{
+  height: 36px;
+  width: 36px;
+}
+
+.btn1 {
+background-color:#4dcc5c;
+font-size: 18px;
+color: #ffffff;
+width: 140px;
+height: 35px;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+margin-right: 40px;
+}
+.btn0 {
+  background-color:rgb(179, 6, 0);
+  font-size: 18px;
+  color: #ffffff;
+  width: 140px;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 40px;
+}
+.btn3{
+  background-color: black;
+  font-size: 13px;
+  color: #ffffff;
+  width: 70px;
+  height: 27px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 40px;
+}
+.headcard{
+justify-content: center;
+display: flex;
+margin-bottom: 20px;
+
+}
+.txt1{
+margin-left: 20px;
+margin-top: -1px;
+font-weight: bolder;
+}
+
+.lbltxt{
+font-weight: bolder;
+}
+
+
+.cardHedr {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #edf1f7;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  color: #222b45;
+  font-family: Open Sans, sans-serif;
+  font-size: 27px;
+  font-weight: 600;
+  line-height: 1.5rem;
+}
+

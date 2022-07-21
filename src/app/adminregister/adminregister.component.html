@@ -1,0 +1,27 @@
+<div class="main">
+  <div class="col-md-12 ">
+    <form [formGroup]="RegisterForm">
+        <h3>ADMIN REGISTER </h3>
+        <div class="col-md-4">
+          <label style="color:black;"> USERNAME</label>
+          <input type="text" formControlName="username" placeholder=" Enter Username">
+        </div>
+        <div class="col-md-4">
+          <label style="color:black;" class="email"> E-MAIL</label>
+          <input type="email" formControlName="email" placeholder="Enter Your Email">
+        </div>
+        <div class="col-md-4">
+          <label style="color:black;"> PASSWORD</label>
+          <input type="password" formControlName="password" placeholder=" Enter Your  password">
+        </div>
+
+        <div class="col-md-4">
+          <label style="color:black;">PRE-PASSWORD</label>
+          <input type="password" formControlName="prePassword" placeholder=" Confirm Your  password">
+        </div>
+    </form>
+    <div class="lbl">
+      <button (click)="createUser(RegisterForm.value)">SUBMIT</button>
+    </div>
+  </div>
+</div>

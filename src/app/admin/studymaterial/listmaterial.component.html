@@ -1,0 +1,85 @@
+<div class="main-content ">
+  <div class="container-fluid ">
+    <div class="row topserch">
+      <div class="col-md-12 ">
+        <div class="card ">
+          <div class="cardHedr">
+            <div class="row pull-left">
+              <button class="btn3" (click)="onCancel()">BACK</button>
+            </div>
+            StudyMaterials
+            <div class="pull-right">
+              <div class="card-body">
+                <form [formGroup]="studyMaterialForm">
+                  <div class="row">
+                    <div class="col-md-4 ">
+                      <div class="form-group">
+                        <div class="frmpos1">
+                          <label class="lbltxt">SubCategory </label>
+                          <select type="text" class="form-control inputtype" formControlName="cmbDetailSubCategoryType"
+                            name="cmbDetailSubCategoryType">
+                            <option *ngFor="let objvalue of arryOfData" value={{objvalue._id}}>
+                              {{objvalue.fieldName}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="frmpos1">
+                          <label class="lbltxt">Semester</label>
+                          <input type="text" class="form-control inputtype" formControlName="semester"
+                            placeholder="Enter Semester">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="frmpos1">
+                          <label class="lbltxt">SubjectName</label>
+                          <input type="text" class="form-control inputtype" formControlName="subject"
+                            placeholder="Enter SubjectName">
+                        </div>
+                      </div>
+                    </div>
+                   
+                  </div>
+                  <div class="col-md-4">
+                    <label class="lbltxt"> Material </label>
+                    <div class="input-group">
+                      <input formControlName="logoUrl" name="logoUrl" type="file" #fileInput
+                        class='form-control' (change)="getMultipleFileInfo($event)">
+                      <tr *ngIf="fileLogo">
+                        <td> <img class="imgicon" src="{{fileLogo}}" alt=""></td>
+                      </tr>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="frmpos1">
+                        <label class="lbltxt">Description</label>
+                        <textarea type="text-area" class="form-control inputtype" formControlName="description"
+                          placeholder="Enter Description"></textarea>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-md-12 pull-right">
+                    <div class="row pull-right">
+                      <button class="btn1" (click)="studymaterials(studyMaterialForm.value)">SUBMIT</button>
+                    </div>
+                    <div class="row pull-right">
+                      <button class="btn0" (click)="onCancel()">Cancel</button>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

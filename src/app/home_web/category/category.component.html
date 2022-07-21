@@ -1,0 +1,35 @@
+<div class="auto-container">
+  <div class="sec-title centered">
+    <h2 style="text-align: center;">Choose a topic</h2>
+    <div class="text">
+      <p><b>MSC ComputerScience</b> and<b> MCA</b> students at Calicut University can download
+        previous question papers and study materials for semester/annual exams.
+        <b>UGC-NET </b> study materials are also provided for the students .
+        Use the oppertunity and enjoy your studies.
+        <br><br>For MSC Computer Science and MCA students in <b>Calicut University </b>
+        study materials and previous question papers of all semester is provided.
+        Students can download previous Calicut University Examination question paper
+        by selecting specific course from below.
+      </p>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3" *ngFor="let obj of arryOfItemData;let i = index">
+          <div class="topic-block ">
+            <div class="inner-box">
+              <div class="icon-box">
+                <i class="fa fa-book" style="font-size:40px;color:rgb(0, 0, 0)"></i>
+              </div>
+              <h5 class="head"><a (click)=onClick(obj) href="">{{obj.fieldName}}</a></h5>
+              <div class="text">
+                <p>{{obj.description}}</p>
+              </div>
+              <button style="color:black;background-color: #d2f2f8 ; border-radius: 10px;border: none;">
+                <i class="fa fa-arrow-right"(click)="onClick(obj)"></i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

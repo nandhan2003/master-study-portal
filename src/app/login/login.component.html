@@ -1,0 +1,23 @@
+<section class="login">
+	<div class="login_box">
+		<div class="left">
+			<div class="contact">
+				<form [formGroup]="loginForm" >
+					<h3>LOGIN HERE</h3>
+					<input type="text" formControlName="email" placeholder="E-MAIL">
+					<input type="text" formControlName="password"  placeholder="PASSWORD">
+					<button class="submit mb-2"(click)="login(loginForm.value)">LET'S GO</button>
+					<a class="mt-4 ml-4" routerLink="/register" routerLinkActive="active">New user? Register Here</a>
+				</form>
+			</div>
+		</div>
+		<div class="right">
+			<div class="right-text">
+				<h2>LEARN FROM HERE</h2>
+				<h5>WELCOME</h5>
+			</div>
+			<div class="right-inductor">
+			</div>
+		</div>
+	</div>
+</section>

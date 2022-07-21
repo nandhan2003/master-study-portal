@@ -1,0 +1,74 @@
+<div class="container-fluid  fullHeight">
+    <div class="col-md-12 fullHeight" >
+      <div class="row fullHeight">
+        <!-- <div  class="col-md-3" style="background-color: black;">
+
+        </div>
+        <div  class="col-md-3" style="background-color: rgb(177, 69, 69);">
+          
+        </div>
+        <div  class="col-md-6" style="background-color: rgb(104, 221, 68);">
+          
+        </div> -->
+
+
+      <div class="col-md-3 "  style="background:#ffffff">
+      </div>
+
+      <div class="col-md-6 bgColor  m-auto- centerAlign">
+        <div class="col border" >
+
+          <div class="social text-center mb-5">
+            <h2 class="fontWeight mb-4" style="color: #F25D38; margin-top: 30px;">User Login </h2>
+            <span style="color:#613f1e;"> let's get started </span>
+          </div>
+
+          <form class="form col-md-12 m-auto" [formGroup]="loginForm">
+            <div class="col-md-12">
+              <div class="row ">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> Email<span class="text-danger bold">*</span>  </label>
+                    <input type="email" class="form-control inputtype" formControlName="email"  
+                    placeholder="Enter Your Email" [ngClass]="{ 'status-danger': getControl.email.invalid }" >
+                  </div>
+                  <div *ngIf="getControl.email.touched && getControl.email.invalid" class="text-danger">
+                    <div *ngIf="getControl.email.errors.required">Email is required.</div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label> Password<span class="text-danger bold">*</span>  </label>
+                    <div class="input-group">
+                      <input [type]="password" class="form-control inputtype"  formControlName="password"  
+                      placeholder="Enter Your  password"  [ngClass]="{ 'status-danger': getControl.password.invalid }" />
+                      <button (click)="onClick()">
+                        <i class="fa fa-eye" aria-hidden="true" *ngIf="!show"></i>
+                        <i class="fa fa-eye-slash" aria-hidden="true" *ngIf="show"></i>
+                      </button>
+                    </div>
+                      <div *ngIf="getControl.password.touched && getControl.password.invalid" class="text-danger">
+                        <div *ngIf="getControl.password.errors.required">Password is required.</div>
+                      </div>
+                      
+                  </div>
+                </div>
+                
+              </div>
+
+            <div class="row justify-content-around">
+              <button class="btn col-md-5" style="background:#F25D38; color: #ffff;margin-bottom: 50px;margin-top: 50px;"
+              (click)="login(loginForm.value)">Login </button>
+            </div>
+          </div>
+          </form>
+
+        </div>
+      </div>
+
+      <div class="col-md-3 "  style="background:#ffffff">
+      </div>
+
+    </div>
+  </div>
+</div>

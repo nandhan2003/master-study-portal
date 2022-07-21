@@ -1,0 +1,116 @@
+
+
+<header class="header " >
+
+
+  <div class="captionBg">
+    <div class="clearfix">
+                <!-- <div class="top-center pull-left clearfix ">
+                    <ul class="info-list">
+          <span>Call Us:</span><a href="9747308774" style="margin-right:25px" > 9747308774</a>
+          <span>Email Us:</span><a href="greeshmavg77@gmail.com"> greeshmavg77@gmail.com</a>
+        </ul>
+                </div> -->
+      <div class="top-center clearfix lg-nv3">
+        <ul class="login-nav">
+          <a href="login.html" class="log">Log In</a>
+          <a href="register.html" class="reg">Register</a>
+        </ul>
+      </div>
+   </div>
+  </div>
+<!-- </header> -->
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center" >
+
+      <a routerLink="/" class="logo">
+        <img class="imgSize"  src="../../../assets/img/steps logo.svg" alt="Bidderboy">
+      </a>
+      <ul  class="navbar-nav ms-auto top-nav d-none d-md-flex">
+     
+            <li class="nav-item  ">
+              <a class="nav-link  navlink" href="#" >Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/About-us']" class="nav-link  navlink" href="#" >About</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/Course']" class="nav-link  navlink" href="#" >Course</a>
+       
+            </li>
+            <li class="nav-item dropdown">
+              <a [routerLink]="['/Testimonial']" class="nav-link  navlink" href="#" >Testimonial</a>
+        
+            </li>
+            <li class="nav-item dropdown dropdown-mega">
+              <a [routerLink]="['/Contact-us']" class="nav-link  navlink" href="#">Contact&nbsp;us</a>
+            </li>
+          
+        </ul>
+     
+        <nav style="position: inherit;" [ngClass]="{'active': menuOpt, 'sclNav': sclBar}">
+          <div class="container-1 ">
+            <div class="d-flex flex-column flex-md-row dropdown fnt-size">
+              <a href="">Home</a>
+              <a [routerLink]="['/About-us']">About</a>
+              <a  [routerLink]="['/Course']">Course</a>
+                <a [routerLink]="['/Testimonial']" >Testimonial</a>
+                <a [routerLink]="['/Contact-us']">Contact us</a>
+  
+            </div>
+          </div>
+            </nav>
+
+        <a id="menuBtn" (click)="toggleMenu()" class="d-block d-md-none"></a>
+    </div>
+  </div>
+
+</header>
+
+<section id="header" class="one-edge-shadow" [ngClass]="{'active': sclBar}">
+
+  <div class="container second">
+    <div class="d-flex justify-content-between align-items-center">
+    
+      <a routerLink="/" class="logo">
+        <img class="imgSize"  src="../../../assets/img/steps logo.svg" alt="Bidderboy">
+      </a>
+      <ul class="navbar-nav ms-auto top-nav d-none d-md-flex">
+     
+        <li class="nav-item  ">
+          <a class="nav-link  navlink" href="#" >Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a [routerLink]="['/About-us']" class="nav-link  navlink" href="#" >About</a>
+  
+        </li>
+        <li class="nav-item dropdown">
+          <a  [routerLink]="['Course']" class="nav-link  navlink" href="#" >Course</a>
+   
+        </li>
+        <li class="nav-item dropdown">
+          <a [routerLink]="['/Testimonial']" class="nav-link  navlink" href="#" >Testimonial</a>
+    
+        </li>
+        <li class="nav-item dropdown dropdown-mega">
+          <a [routerLink]="['/Contact-us']" class="nav-link  navlink" href="#" >Contact us</a>
+        </li>
+    </ul>
+    <nav style="position: inherit;" [ngClass]="{'active': menuOpt, 'sclNav': sclBar}">
+      <div class="container-1 ">
+        <div class="d-flex flex-column flex-md-row dropdown fnt-size">
+          <a href="">Home</a>
+          <a [routerLink]="['/About-us']">About</a>
+          <a  [routerLink]="['/Course']">Course</a>
+            <a [routerLink]="['/Testimonial']" >Testimonial</a>
+            <a [routerLink]="['/Contact-us']">Contact us</a>
+
+        </div>
+      </div>
+        </nav>
+    
+      <a id="menuBtn" (click)="toggleMenu()" class="d-block d-md-none"></a>
+    </div>
+  </div>
+</section>
+

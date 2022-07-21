@@ -1,0 +1,85 @@
+<div class="main-content ">
+    <div class="container-fluid ">
+      
+        <div class="row topserch">
+            <div class="col-md-12 ">
+              
+                <div class="card " >
+                    <div class="cardHedr" >
+                        Service
+                        <div class="pull-right">
+                          <!-- <button  class="btn2" (click)="onCreate()">Create User</button> -->
+                        </div>
+                      </div>
+                    <div class="card-body " >
+                        <form [formGroup]="ServiceForm" >
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Service Name </label>
+                                            <input type="text" class="form-control" formControlName="serviceName"  
+                                            placeholder="Enter Your Service Name" [ngClass]="{ 'status-danger': getControl.serviceName.invalid }" />
+                                            <div *ngIf="getControl.serviceName.touched && getControl.serviceName.invalid" class="text-danger">
+                                                <div *ngIf="getControl.serviceName.errors.required">Service name is required.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Arabic Name </label>
+                                            <input type="text" class="form-control " formControlName="arabicName"  
+                                            placeholder="Enter Your Arabic Name"  style="text-align: right;">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Icon Name </label>
+                                            <input type="text" class="form-control " formControlName="iconName"  
+                                            placeholder="eg: (fa fa-check)"  >
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <div class="frmpos1">
+                                            <label class="lbltxt"> Sort No </label>
+                                            <input type="number" class="form-control " formControlName="sortNo"  
+                                            placeholder="Enter Number" [ngClass]="{ 'status-danger': getControl.sortNo.invalid }" />
+                                        </div>
+                                        <div *ngIf="getControl.sortNo.touched && getControl.sortNo.invalid" class="text-danger">
+                                            <div *ngIf="getControl.sortNo.errors.required">Sort no is required.</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-5 " style="margin-top: 6px;">
+                                    <label class="lbltxt"> logo </label>
+                                    <div class="input-group">
+                                      <input formControlName="logoUrl" name="logoUrl" type="file" accept="image/*"
+                                       #fileInput class='form-control  '
+                                       (change)="getMultipleFileInfo($event)"  >
+                                        <tr *ngIf="fileLogo">
+                                            <td> <img class="imgicon" src="{{fileLogo}}" alt=""  ></td>
+                                        </tr>
+                                  </div>
+                                </div>
+                                <div class="col-md-12 pull-right">
+                                    <div class="row pull-right">
+                                        <button  class="btn1" (click)="createUser(ServiceForm.value)">Submit</button>
+                                    </div>
+                                    <div class="row pull-right">
+                                        <button  class="btn2" (click)="createUser(ServiceForm.value)">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

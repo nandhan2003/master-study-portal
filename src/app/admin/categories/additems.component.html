@@ -1,0 +1,47 @@
+<div class="main-content ">
+  <div class="container-fluid ">
+    <div class="row topserch">
+      <div class="col-md-12 ">
+        <div class="card ">
+          <div class="cardHedr">
+            Category
+            <div class="pull-right">
+              <div class="card-body">
+                <form [formGroup]="ItemsForm">
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="frmpos1">
+                          <label class="lbltxt">FieldName</label>
+                          <input type="text" class="form-control inputtype" formControlName="fieldName"
+                            placeholder="Enter FieldName">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <div class="frmpos1">
+                          <label class="lbltxt">Description</label>
+                          <textarea type="text-area" class="form-control inputtype" formControlName="description"
+                            placeholder="Enter Description"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-12 pull-right">
+                    <div class="row pull-right">
+                      <button class="btn0"(click)="onCancel()">BACK</button>
+                  </div>
+                    <div class="row pull-right">
+                        <button class="btn1"(click)="addItems(ItemsForm.value)">SUBMIT</button>
+                    </div>
+                </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
