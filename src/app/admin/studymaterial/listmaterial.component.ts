@@ -104,6 +104,7 @@ export class ListmaterialComponent implements OnInit {
         // this.studyMaterialForm.patchValue({ date: this.datepipe.transform(res.data[0].date, 'yyyy-MM-dd')});
         // this.studyMaterialForm.patchValue({ semester:  res.data[0].semester });
         this.studyMaterialForm.patchValue({ subject:  res.data[0].subject });
+        this.onChange(res.data[0].fkIntCategoryId)
       }else{
         Swal.fire("Error!", res.message, "error");
       }
@@ -143,7 +144,7 @@ export class ListmaterialComponent implements OnInit {
 }
 
 onChange(event) {
-  // this.arryOfSemester =[];
+  this.arryOfSemester =[];
   console.log("lll----",event)
   try {
     var objData = {
