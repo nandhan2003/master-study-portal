@@ -43,13 +43,13 @@ export class SecondpageComponent implements OnInit {
           console.log("nnn---",this.arryOfSemester)
         } else {
           if( res.message === "Token Error"){
-            this.router.navigate( ['./admin']);
+            // this.router.navigate( ['./admin']);
           }
         }
       },(error:HttpErrorResponse) => {
         console.log(error);
         if( error.message === "Token Error"){
-          this.router.navigate( ['./admin']);
+          // this.router.navigate( ['./admin']);
         }
     });
     } catch (error) {
