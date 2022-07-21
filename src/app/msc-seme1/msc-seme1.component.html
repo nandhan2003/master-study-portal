@@ -1,107 +1,30 @@
 <app-header></app-header>
 <section>
   <div class="pos">
-    <h4 class="sub-title">SEMESTER-1</h4>
+    <h4 class="sub-title">{{semester}}</h4>
   </div>
-  <table>
-    <th>SUBJECT</th>
-    <th>MODULE 1</th>
-    <th>MODULE 2</th>
-    <th>MODULE 3</th>
-    <th>MODULE 4</th>
-    <th>MODULE 5</th>
-
-    <tr>
-      <td>Discrete Mathematics and Structures</td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Advanced Data Structures</td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Theory of Computation</td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Art of Programming Methedology</td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-    </tr>
-    <tr>
-      <td>Computer Architecture</td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-      <td><button class="view">view</button>
-        <button class="dwn">download</button>
-      </td>
-    </tr>
-
-  </table>
+  <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <table class="table table-striped">
+          <thead class="thead-dark">
+          <th>SUBJECT</th>
+          <th>MODULES</th>
+        </thead>
+  
+        <tbody >
+        <tr  *ngFor="let obj of arryOfsubject;let i = index"  [ngClass]="{'clor1': 0 === i % 2}" >
+          <td>{{obj.subject}}</td>
+          <td style="display: flex;justify-content: center;">
+            <!-- <button class="view">view</button> -->
+            <button class="dwn" (click)="Downloadimages(obj)">download</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-md-2"></div>
+  </div>
+ 
 </section>
 <app-footer></app-footer>
