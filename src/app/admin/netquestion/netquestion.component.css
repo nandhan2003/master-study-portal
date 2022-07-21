@@ -107,3 +107,7 @@ table,tr{
     display: inline;
     float: right;
   }
+  .imgicon{
+    height: 48px;
+    width: 60px;
+  }
