@@ -33,12 +33,13 @@
 color: black;
 }
 .inputtype {
-border-radius: 5px;
-height: calc(2rem + 2px);
-width: 150px;
-font-size: 14px;
-margin-right: 700px;
-}
+  border-radius: 5px;
+  height: calc(2rem + 2px);
+  height: 34px;
+  font-size: 14px;
+  /* width: max-content; */
+  margin-right: 450px;
+  }
 
 .btn1 {
 background-color:#4dcc5c;

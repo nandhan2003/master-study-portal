@@ -34,6 +34,9 @@ import { McaSeme3Component } from './mca-seme3/mca-seme3.component';
 import { MscSyllabusComponent } from './msc-syllabus/msc-syllabus.component';
 import { McaSyllabusComponent } from './mca-syllabus/mca-syllabus.component';
 import { SubjectViewComponent } from './subject-view/subject-view.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
+
 
   const routes: Routes = [
 
@@ -44,7 +47,7 @@ import { SubjectViewComponent } from './subject-view/subject-view.component';
     },
 
     { path: 'home', component: LandingPageComponent},
-    // { path: 'register', component: RegisterComponent},
+    // { path: 'login', component: LoginComponent},
     // { path: 'course', component: CourseComponent},
     // { path: 'semester', component: SemesterComponent},
     // { path: 'sem1', component: Sem1Component},
@@ -75,6 +78,8 @@ import { SubjectViewComponent } from './subject-view/subject-view.component';
     { path: 'mscSyllabus', component: MscSyllabusComponent},
     { path: 'mcaSyllabus', component: McaSyllabusComponent},
     { path: 'subject-view', component: SubjectViewComponent},
+    { path: 'aboutUs', component : AboutUsComponent },
+    { path: 'contactUs', component: ContactUsComponent},
 
 
 

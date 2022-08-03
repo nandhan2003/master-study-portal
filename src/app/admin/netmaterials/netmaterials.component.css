@@ -8,49 +8,26 @@
 color: black;
 }
 .inputtype {
-border-radius: 5px;
-height: calc(2rem + 2px);
-width: 150px;
-font-size: 14px;
-/* margin-right: 700px; */
-}
-.imgicon{
-  height: 36px;
-  width: 36px;
-}
+  border-radius: 5px;
+  height: calc(2rem + 2px);
+  height: 34px;
+  font-size: 14px;
+  /* width: max-content; */
+  margin-right: 450px;
+  }
 
 .btn1 {
 background-color:#4dcc5c;
 font-size: 18px;
 color: #ffffff;
-width: 140px;
+width: 120px;
 height: 35px;
 border: none;
 cursor: pointer;
+margin-left: auto;
 border-radius: 5px;
-margin-right: 40px;
-}
-.btn0 {
-  background-color:rgb(179, 6, 0);
-  font-size: 18px;
-  color: #ffffff;
-  width: 140px;
-  height: 35px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-right: 40px;
-}
-.btn3{
-  background-color: black;
-  font-size: 13px;
-  color: #ffffff;
-  width: 70px;
-  height: 27px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  margin-right: 40px;
+margin-bottom: 30px;
+align-items: center;
 }
 .headcard{
 justify-content: center;
@@ -67,8 +44,29 @@ font-weight: bolder;
 .lbltxt{
 font-weight: bolder;
 }
-
-
+.btn0 {
+  background-color:rgb(179, 6, 0);
+  font-size: 18px;
+  color: #ffffff;
+  width: 140px;
+  height: 35px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 40px;
+  margin-left: 30px;
+}
+.btn3{
+  background-color: black;
+  font-size: 13px;
+  color: #ffffff;
+  width: 70px;
+  height: 27px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-right: 40px;
+}
 .cardHedr {
   padding: 1rem 1.5rem;
   border-bottom: 1px solid #edf1f7;
@@ -80,4 +78,10 @@ font-weight: bolder;
   font-weight: 600;
   line-height: 1.5rem;
 }
-
+.input-group{
+width: 250px;
+}
+.imgicon{
+  height: 36px;
+  width: 36px;
+}

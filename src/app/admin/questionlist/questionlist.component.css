@@ -33,7 +33,6 @@ table,tr{
   font-size: 14px;
   border: 1px solid ;
   margin-left: 10px;
- width: max-content;
 }
 .page-item.active .page-link {
   z-index: 1;
@@ -55,13 +54,12 @@ table,tr{
   background-color:#9aa5ae;
   font-size: 18px;
   color: #ffffff;
-  width: 160px;
+  width:max-content;
   height: 35px;
   border: none;
   cursor: pointer;
   font-family: Open Sans, sans-serif;
 }
-
 .btn1 {
   background-color:#4dcc5c;
   font-size: 18px;
@@ -72,40 +70,40 @@ table,tr{
   cursor: pointer;
   border-radius: 5px;
   margin-right: 40px;
-  }
-  .btn4 {
-    background-color:#cf787e;
-    /* margin-left:2px; */
-    padding-left: 9px;
-    padding-top: 4px;
-    font-size: 15px;
-    color: white;
-    width: 30px;
-    height: 29px;;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-family: Open Sans, sans-serif;
-    /* border-radius: 5px; */
-    /* margin-right: 40px; */
-    /* margin-top: 60px; */
-    /* border-style: dashed; */
-  }
-  .btn5 {
-    background-color:#568e9c;
-    /* margin-right: 78%; */
-    padding-left: 9px;
-    padding-top: 4px;
-    font-size: 15px;
-    color: white;
-    width: 30px;
-    height: 29px;;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    font-family: Open Sans, sans-serif;
-  }
-  .buttons{
-    display: inline;
-    float: right;
-  }
+}
+.btn4 {
+  background-color:#cf787e;
+  /* margin-left:2px; */
+  padding-left: 9px;
+  padding-top: 4px;
+  font-size: 15px;
+  color: white;
+  width: 30px;
+  height: 29px;;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-family: Open Sans, sans-serif;
+  /* border-radius: 5px; */
+  /* margin-right: 40px; */
+  /* margin-top: 60px; */
+  /* border-style: dashed; */
+}
+.btn5 {
+  background-color:#568e9c;
+  /* margin-right: 78%; */
+  padding-left: 9px;
+  padding-top: 4px;
+  font-size: 15px;
+  color: white;
+  width: 30px;
+  height: 29px;;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  font-family: Open Sans, sans-serif;
+}
+.buttons{
+  display: inline;
+  float: right;
+}

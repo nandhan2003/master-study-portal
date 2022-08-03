@@ -56,6 +56,8 @@ import { McaSeme3Component } from './mca-seme3/mca-seme3.component';
 import { MscSyllabusComponent } from './msc-syllabus/msc-syllabus.component';
 import { McaSyllabusComponent } from './mca-syllabus/mca-syllabus.component';
 import { SubjectViewComponent } from './subject-view/subject-view.component';
+import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 // import { SubcategorylistComponent } from './admin/subcategorylist/subcategorylist.component';
 
 
@@ -101,6 +103,8 @@ import { SubjectViewComponent } from './subject-view/subject-view.component';
     MscSyllabusComponent,
     McaSyllabusComponent,
     SubjectViewComponent,
+    AboutUsComponent,
+    ContactUsComponent,
    
     
    
