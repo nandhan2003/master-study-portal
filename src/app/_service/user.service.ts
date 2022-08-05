@@ -51,13 +51,13 @@ export class UserService {
   }
 
 
-  // login(obj){
-  //   console.log("login heree---",obj)
-  //   return this.https.post('/api/auth/login', obj)
-  //   .map(res => res.json())
-  //   .catch(this.https.hamdleError);
+  sendDocumentEmail(obj){
+    console.log("login heree---",obj)
+    return this.https.post('/api/email/sendDocumentEmail', obj)
+    .map(res => res.json())
+    .catch(this.https.hamdleError);
 
-  // }
+  }
 
 
 
