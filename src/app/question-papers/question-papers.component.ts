@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { AddquestionService} from '../_service/addquestion.service';
 
 @Component({
   selector: 'app-question-papers',
@@ -8,14 +10,55 @@ import { Component, OnInit } from '@angular/core';
 export class QuestionPapersComponent implements OnInit {
   // toggle1 = false;
   // toggle2 = false;
-
+  arryOfItemData =[];
   
-  constructor() { }
+  constructor(private AddquestionSRV:AddquestionService,) { }
 
   ngOnInit(): void {
     
     this.collapsibl();
+    this.QuestionUpload();
   }
+
+  QuestionUpload(){
+    // console.log("loadItem=----",this.getControl.subject.value,
+    // this.getControl.year.value)
+    this.arryOfItemData =[];
+
+    try {
+      var objData = {
+        intSkipCount: 0,
+        intPageLimit: 0,
+        // subject :  this.getControl.subject.value,
+        // semester:  this.getControl.semester.value,
+        
+      }
+      console.log("objData=----",objData)
+      this.AddquestionSRV.GetAllQuestionData(objData).subscribe((res: any) => {
+        console.log("rea=----",res)
+        if (res && res.success === true) {
+
+          this.arryOfItemData = res.data[0];
+        
+        } else {
+          if( res.message === "Token Error"){
+            // this.router.navigate( ['./questionlist']);
+          }
+        }
+      },(error:HttpErrorResponse) => {
+
+        console.log(error);
+        // if( error.message === "Token Error"){
+        //   this.router.navigate( ['./admin']);
+        // }
+    });
+    } catch (error) {
+    }
+}
+
+
+
+
   collapsibl(){
     var coll = document.getElementsByClassName("collapsible");
     var i;

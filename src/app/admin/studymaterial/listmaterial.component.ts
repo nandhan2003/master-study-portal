@@ -64,7 +64,7 @@ export class ListmaterialComponent implements OnInit {
       'semester':[''],
       'logoUrl': [],
       'material': [''],
-      'description': [''],
+      // 'description': [''],
       'cmbDetailSubCategoryType':['']
     });
 
@@ -198,7 +198,7 @@ onChange(event) {
             category : category,
             subject: obj.subject,
             semester:semester,
-            description:obj.description,
+            // description:obj.description,
             logoUrl:this.fileLogo
           }
           console.log("shd----", objData)
