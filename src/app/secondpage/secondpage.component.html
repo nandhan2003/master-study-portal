@@ -13,21 +13,20 @@
           </div>
         </div>
         <div class="row">
-          <div class="cource-block-two col-md-4">
+          <div class="cource-block-two col-md-4"  *ngFor="let obj of arryOfSemester;let i = index">
             <div class="inner-box">
               <div class="card">
                 <img class="card-img-top" src="../../assets/dist/img/msc.jpeg" alt="Card image cap">
               </div>
               <div class="lower-content">
-                <h5><a href="http://localhost:4200/mscSyllabus">SYLLABUS:MSC</a></h5>
+                <h5><a  (click)=onClick(obj) >{{obj.semester}}</a></h5>
                 <div class="text">
-                  <p>Complete syllabus information for Msc Computer Science students
-                    in University of Calicut is available.</p>
+                  <p>{{obj.description}}</p>
                 </div>
               </div>
             </div>
           </div>
-          <div class="cource-block-two col-md-4">
+          <!-- <div class="cource-block-two col-md-4">
             <div class="inner-box">
               <div class="card">
                 <img class="card-img-top" src="../../assets/dist/img/msc.jpeg" alt="Card image cap">
@@ -86,7 +85,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row" style="height: 10px;">
           </div>
         </div>

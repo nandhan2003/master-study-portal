@@ -11,23 +11,26 @@
       <div class="contact-form-wrapper">
         <form [formGroup]="ContactForm">
           <div class="form-item">
-            <input type="text" name="name" required>
+            <input type="text" name="name" formControlName="name" required>
             <label>Name:</label>
           </div>
           <div class="form-item">
-            <input type="text" name="mobile" required>
+            <input type="text" name="mobile" formControlName="mobile" required>
             <label>Mobile:</label>
           </div>
           <div class="form-item">
-            <textarea class="" name="message" required></textarea>
+            <textarea class="" name="message" formControlName="messege" required></textarea>
             <label>Message:</label>
           </div>
           <div class="form-item">
-            <input type="text" name="email" required>
+            <input type="text" name="email" formControlName="email" required>
             <label>Email:</label>
           </div>
-       
-          <button class="submit-btn">Send</button>  
+          <div class="form-item">
+            <input type="text" name="subject" formControlName="subject" required>
+            <label>Subject:</label>
+          </div>
+          <button class="submit-btn" (click)="createEntry()">Send</button>  
         </form>
       </div>
     </div>

@@ -14,12 +14,12 @@
 }
 
 .logo a, .logo {
-    background-color:   #6e6e6e;
+    background-color:   #075e89;
     color: #fff;
 }
 
 .sidebar[data-background-color="blueblack"] {
-    background-color: #6e6e6e;
+    background-color: #075e89;
 }
 
 .sidebar[data-color="white"] li a {

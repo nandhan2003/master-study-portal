@@ -33,6 +33,7 @@ export class NavigationComponent implements OnInit {
   ngOnInit(): void {
     // this.getAlertDetails();
     this.userDetails = JSON.parse(localStorage.getItem('user_details'));
+    console.log("adsfjg  =----", this.userDetails)
     const navbar: HTMLElement = this.element.nativeElement;
     this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
     this.router.events.subscribe((event) => {

@@ -34,7 +34,7 @@ export class ContactUsComponent implements OnInit {
   get getControl() { return this.ContactForm.controls; }
 
   createEntry(){
-      
+      console.log("dsjfds =---")
     const obj = {
     name:this.getControl.name.value,
     mobile: this.getControl.mobile.value,
@@ -42,6 +42,7 @@ export class ContactUsComponent implements OnInit {
     email:this.getControl.email.value,
     subject: this.getControl.subject.value,
     }
+    console.log("objobj =---",obj)
   this.sendDocumentEmail.sendDocumentEmail(obj)
   .pipe(first())
     .subscribe(

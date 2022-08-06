@@ -49,11 +49,13 @@
                   <table class="table tblhead">
                     <thead>
                       <th> No.</th>
+                      <th> Category</th>
                       <th> Semester</th>
                       <th> Description</th>
                     </thead>
                     <tr *ngFor="let obj of arryOfItemData;let i = index">
                       <td>{{i+1}}</td>
+                      <td> {{obj.category.fieldName}}</td>
                       <td> {{obj.semester}}</td>
                       <td> {{obj.description}}</td>
                       <td>
