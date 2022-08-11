@@ -29,7 +29,7 @@
       <ul  class="navbar-nav ms-auto top-nav d-none d-md-flex">
      
             <li class="nav-item  ">
-              <a class="nav-link  navlink" >Home</a>
+              <a [routerLink]="['/home']" class="nav-link  navlink" >Home</a>
             </li>
             <li class="nav-item dropdown">
               <a [routerLink]="['/aboutUs']" class="nav-link  navlink"  >AboutUs</a>
@@ -51,7 +51,7 @@
         <nav style="position: inherit;" [ngClass]="{'active': menuOpt, 'sclNav': sclBar}">
           <div class="container-1 ">
             <div class="d-flex flex-column flex-md-row dropdown fnt-size">
-              <a href="">Home</a>
+              <a [routerLink]="['/home']">Home</a>
               <a [routerLink]="['/aboutUs']">About</a>
               <a  [routerLink]="['/questionPapers']">Question Papers</a>
                 <a [routerLink]="['/netMaterials']" >UGC-NET Materials</a>
@@ -78,7 +78,7 @@
       <ul class="navbar-nav ms-auto top-nav d-none d-md-flex">
      
         <li class="nav-item  ">
-          <a class="nav-link  navlink" >Home</a>
+          <a [routerLink]="['/home']" class="nav-link  navlink" >Home</a>
         </li>
         <li class="nav-item dropdown">
           <a [routerLink]="['/aboutUs']" class="nav-link  navlink" >AboutUs</a>
@@ -99,7 +99,7 @@
     <nav style="position: inherit;" [ngClass]="{'active': menuOpt, 'sclNav': sclBar}">
       <div class="container-1 ">
         <div class="d-flex flex-column flex-md-row dropdown fnt-size">
-          <a href="">Home</a>
+          <a [routerLink]="['/home']">Home</a>
           <a [routerLink]="['/aboutUs']">About</a>
           <a  [routerLink]="['/questionPapers']">Question Papers</a>
             <a [routerLink]="['/netMaterials']" >UGC-NET Materials</a>

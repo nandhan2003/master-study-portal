@@ -63,7 +63,7 @@
                     <label class="lbltxt"> Material </label>
                     <div class="input-group">
                       <input formControlName="logoUrl" name="logoUrl" type="file" #fileInput
-                        class='form-control' (change)="getMultipleFileInfo($event)">
+                        class='form-control' (change)="getMultipleFileInfo($event)" multiple="true">
                       <tr *ngIf="fileLogo">
                         <td> <img class="imgicon" src="{{fileLogo}}" onerror="src='../../../assets/dist/img/docorpdf.png';" alt=""></td>
                       </tr>
