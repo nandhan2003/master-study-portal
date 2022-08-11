@@ -1,281 +1,69 @@
-<!-- <div>
-  <app-header></app-header>
-  <section>
-    <table>
-      <div class="mat-tab-link-container">
-        <div class="mat-tab-list" style="transform: translateX(0px);">
-          <mat-ink-bar class="mat-ink-bar">
-            <div class="mat-tab-links">
-              <a (onClick)="changeTab()" mat-tab-link="" routerlinkactive=""
-                class="mat-tab-link mat-focus-indicator docs-component-viewer-section-tab ng-star-inserted mat-tab-label-active"
-                aria-disabled="false" id="mat-tab-link-0" tabindex="0"
-                aria-current="page" class="tab-btn">MSC</a>
-              <mat-slider min="1" max="5" step="0.5" value="1.5"></mat-slider>
-              <a (onClick)="changeTab()" mat-tab-link="" routerlinkactive=""
-                class="mat-tab-link mat-focus-indicator docs-component-viewer-section-tab ng-star-inserted"
-                aria-disabled="false" id="mat-tab-link-1" tabindex="0"
-                class="tab-btn">MCA</a>
-              <mat-slider min="1" max="5" step="0.5" value="1.5">
-              </mat-slider>
-            </div>
-          </mat-ink-bar>
-        </div>
-      </div>
-      <div *ngIf="this.mca">
-        <tr>
-          <td class="sem" id="">SEMESTER-1</td>
-        </tr>
-        <tr>
-          <td>Discrete Mathematics and Structures</td>
-        </tr>
-        <tr>
-          <td>Advanced Data Structures</td>
-        </tr>
-        <tr>
-          <td>Theory of Computation</td>
-        </tr>
-        <tr>
-          <td>Computer Architecture</td>
-        </tr>
-        <tr>
-          <td>Art of Programming Methedology</td>
-        </tr>
-        <tr>
-          <td class="sem">SEMESTER-2</td>
-        </tr>
-        <tr>
-          <td>Design and Analysis of Algorithms</td>
-        </tr>
-        <tr>
-          <td>Operating System Concepts</td>
-        </tr>
-        <tr>
-          <td>Computer Networks</td>
-        </tr>
-        <tr>
-          <td>Computational Intelligence</td>
-        </tr>
-        <tr>
-          <td>Principles of Software Engineering</td>
-        </tr>
-        <tr>
-          <td>Cloud Computing</td>
-        </tr>
-        <tr>
-          <td class="sem">SEMESTER-3</td>
-        </tr>
-        <tr>
-          <td>Advanced Database Management System </td>
-        </tr>
-        <tr>
-          <td>Object Oriented Programming Concepts</td>
-        </tr>
-        <tr>
-          <td>Principles of Compilers</td>
-        </tr>
-        <tr>
-          <td>Computer Graphics</td>
-        </tr>
-        <tr>
-          <td>Virtualiztion and Cloud Computing</td>
-        </tr>
-        <tr>
-          <td class="sem">SEMESTER-4</td>
-        </tr>
-        <tr>
-          <td>Advanced Java Programming</td>
-        </tr>
-        <tr>
-          <td>Fundamentals of Big Data</td>
-        </tr>
-      </div>
-    </table>
-  </section>
-  <app-footer></app-footer>
-</div> -->
+
 <app-header></app-header>
 <section class="testimonial section">
 <div class="container">
-<div class="row">
- <div class="col-md-12">
-<div id="page1" class="buttonChange"  >
+  <div class="row">
 
-  <div class="col-md-12 toppos" >
-    <!-- <div class="row" style="justify-content: center" >
-    <button [ngClass]="{'headbtnsHomeClick' : toggle1, '': !toggle1}" (click)="ChangeTab('page1')" class="first active btn">
-      Msc
-     </button>&nbsp;&nbsp;&nbsp;
-     <button  [ngClass]="{'headbtnsHomeClick' : toggle2, '': !toggle2}"   (click)="ChangeTab('page2')" class="first active btn" >
-      Mca
-     </button>&nbsp;&nbsp;&nbsp;
-    </div> -->
-    <div style="justify-content: center;display:flex">
-      <h4 class="sub-title">Msc Computer Science</h4>
-    </div>
-<div class="faq-wrap faq-s1">
- 
- 
+      <div class="col-md-12">
+        <div id="page1" class="buttonChange"  >
+          <!-- <h4 class="sub-title">{{arryOfItemData[0].subCategory.category.fieldName}}</h4> -->
+            <div class="col-md-12 toppos" *ngFor="let obj of arryOfItemData;let i = index">
+              <div style="justify-content: center;display:flex" >
+                <h4 class="sub-title">{{obj._id}}</h4>
+              </div>
+                    <div class="col-md-12">
+                      <table class="table table-striped">
+                        <thead class="thead-dark">
+                        <th>SEMESTER</th>
+                        <th>SUBJECT</th>
+                        <th>YEAR</th>
+                        <th>QUESTION PAPER</th>
+                      </thead> 
+                    
+                      <tbody >
+                      <tr *ngFor="let objdata of obj.books;let i = index"  [ngClass]="{'clor1': 0 === i % 2}" >
+                        <td>{{objdata.subject.semester.semester}}</td>
+                        <td>{{objdata.subject.subject}}</td>
+                        <td>{{objdata.year}}</td>
+                        <!-- <td>
+                          <img [src]="obj.pdf" alt="Image not found"  class="img-td"
+                          onerror="src='';" alt="alternative">
+                        </td> -->
+                        <td><button class="view" (click)="openPrediction(objdata.pdf)" >view</button>
+                          <button class="dwn" (click)="Downloadimages(objdata.pdf)">download</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                    </table>
+                    </div>
+              
+                </div>
+          
 
-  <!-- <div class="accordion" > -->
-    <!-- <div class="accordion-item"> -->
-
-        <button class="collapsible  drop-arw " type="button" >
-         SEMESTER-1
-        </button>
-        <div class="col-6 content-text drpdwn">
-          <p>Discrete Mathematics and Structures <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Advanced Data Structures<button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Theory of Computation <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Computer Architecture <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Art of Programming Methedology <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
         </div>
 
-        <button class=" collapsible  drop-arw"  type="button" >
-         SEMESTER-2
-        </button>
-        <div class=" col-6 content-text drpdwn">
-          <p>Design and Analysis of Algorithms  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Operating System Concepts  <button class="dwn" >download</button><button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Computer Networks  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Computational Intelligence  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Principles of Software Engineering  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Cloud Computing  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-         </div>
-
-        <button class="collapsible  drop-arw"  type="button" >
-          SEMESTER-3
-        </button>
-        <div class=" col-6 content-text drpdwn">
-          <p>Advanced Database Management System  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Object Oriented Programming Concepts  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Principles of Compilers  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Computer Graphics  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Virtualiztion and Cloud Computing  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-        </div>
-
-        <button class=" collapsible  drop-arw"  type="button" >
-          SEMESTER-4
-        </button>
-        <div class=" col-6 content-text drpdwn">
-          <p>Advanced Java Programming  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Fundamentals of Big Data  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-        </div>
-    <!-- </div> -->
-  <!-- </div> -->
-</div>
+      </div>
+  
   </div>
-</div>
- </div>
- <div class="col-md-12">
-<div id="page2" class="buttonChange"  >
-
-  <div class="col-md-12 toppos" >
-    <!-- <div class="row" style="justify-content: center" >
-    <button [ngClass]="{'headbtnsHomeClick' : toggle1, '': !toggle1}" (click)="ChangeTab('page1')"class="first active btn">
-      Msc
-     </button>&nbsp;&nbsp;&nbsp;
-     <button [ngClass]="{'headbtnsHomeClick' : toggle2, '': !toggle2}"   (click)="ChangeTab('page2')" class="first active btn">
-      Mca
-     </button>&nbsp;&nbsp;&nbsp;
-    </div> -->
-    <div style="justify-content: center;display:flex">
-      <h4 class="sub-title">MCA</h4>
-    </div>
-<div class="faq-wrap faq-s1">
- 
- 
-
-  <!-- <div class="accordion" > -->
-    <!-- <div class="accordion-item"> -->
-
-        <button class="collapsible  drop-arw " type="button" >
-         SEMESTER-1
-        </button>
-        <div class="col-6 content-text drpdwn">
-          <p>Discrete Mathematics and Structures <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Advanced Data Structures<button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Theory of Computation <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Computer Architecture <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Art of Programming Methedology <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-        </div>
-
-        <button class=" collapsible  drop-arw"  type="button" >
-         SEMESTER-2
-        </button>
-        <div class=" col-6 content-text drpdwn">
-          <p>Design and Analysis of Algorithms  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Operating System Concepts  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Computer Networks  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Computational Intelligence  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Principles of Software Engineering  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Cloud Computing  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-         </div>
-
-        <button class="collapsible  drop-arw"  type="button" >
-          SEMESTER-3
-        </button>
-        <div class=" col-6 content-text drpdwn">
-          <p>Advanced Database Management System  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Object Oriented Programming Concepts  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Principles of Compilers  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Computer Graphics  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Virtualiztion and Cloud Computing  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-        </div>
-
-        <button class=" collapsible  drop-arw"  type="button" >
-          SEMESTER-4
-        </button>
-        <div class=" col-6 content-text drpdwn">
-          <p>Advanced Java Programming  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-          <p>Fundamentals of Big Data  <button class="dwn" >download</button>
-            <button class="dwn" >download</button><button class="dwn" >download</button></p>
-        </div>
-    <!-- </div> -->
-  <!-- </div> -->
-</div>
-  </div>
-</div>
-
-<div class="row contentcenter">
-  <button class="headbtnsHome"></button>
-  <button class="headbtnsHome"></button>
-</div>
-</div>
-</div>
 </div>
 </section>
 <app-footer></app-footer>
+
+<!-- <div class="col-md-8">
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <th>SUBJECT</th>
+    <th>MODULES</th>
+  </thead> 
+
+  <tbody >
+  <tr  *ngFor="let obj of arryOfsubject;let i = index"  [ngClass]="{'clor1': 0 === i % 2}" >
+    <td>{{obj.subject}}</td>
+    <td style="display: flex;justify-content: center;">
+      <button class="view">view</button>
+      <button class="dwn" (click)="Downloadimages(obj)">download</button>
+    </td>
+  </tr>
+</tbody>
+</table>
+</div> -->

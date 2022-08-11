@@ -32,6 +32,13 @@ export class AddquestionService {
     .map(res => res.json())
     .catch(this.https.hamdleError);
   }
+  GetAllQuestionGroupData(param: any){
+    console.log("param=----",param)
+    return this.https.post('/api/course/getQuestionGroupList', param )
+    .map(res => res.json())
+    .catch(this.https.hamdleError);
+  }
+  
   GetCourseData(param: any){
     console.log("param=----",param)
     return this.https.post('/api/course/getCourseList', param )

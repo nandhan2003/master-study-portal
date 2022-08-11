@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { AddquestionService} from '../_service/addquestion.service';
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-question-papers',
@@ -34,12 +35,12 @@ export class QuestionPapersComponent implements OnInit {
         
       }
       console.log("objData=----",objData)
-      this.AddquestionSRV.GetAllQuestionData(objData).subscribe((res: any) => {
-        console.log("rea=----",res)
+      this.AddquestionSRV.GetAllQuestionGroupData(objData).subscribe((res: any) => {
+        console.log("arryOfItemData   %%%%%%%%%%%%%%%%%%%%%%%%----",res)
         if (res && res.success === true) {
 
           this.arryOfItemData = res.data[0];
-        
+          console.log("arry",this.arryOfItemData)
         } else {
           if( res.message === "Token Error"){
             // this.router.navigate( ['./questionlist']);
@@ -76,6 +77,37 @@ export class QuestionPapersComponent implements OnInit {
     }
   }
   
+  
+Downloadimages(event){
+
+  if(event){
+    window.location.href =  event;
+  }else{
+    // alert('No Image Found')
+    Swal.fire({
+      title: "Error",
+      text: "No Image Found",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+  }
+}
+
+openPrediction(event) {
+  console.log("yyy--",event)
+ 
+  if(event){
+    window.open(event);
+  }else{
+    // alert('No Image Found')
+    Swal.fire({
+      title: "Error",
+      text: "No Image Found",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+  }
+}
 
 }
 // constructor() { }

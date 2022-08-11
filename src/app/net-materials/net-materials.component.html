@@ -1,10 +1,38 @@
 <div>
   <app-header></app-header>
   <section>
+    <!-- <div class="container"> -->
+    <div class="col-md-12">
     <div class="pos">
       <h4 class="sub-title">UGC-NET: STUDY MATERIALS</h4>
     </div>
-    <table>
+    <div class="row">
+      <div class="col-md-2"></div>
+    <div class="col-md-8">
+      <table class="table table-striped">
+        <thead class="thead-dark">
+          <th>MATERIALS</th>
+          <th>QUESTION PAPERS</th>
+          <th>VIDEO LINKS</th>
+      </thead> 
+    
+      <tbody >
+      <tr  *ngFor="let obj of arryOfItemData;let i = index"  [ngClass]="{'clor1': 0 === i % 2}" >
+        <!-- <td>{{obj.subject}}</td> -->
+        <td><button class="view" (click)="openPrediction(obj.material)" >view</button>
+          <button class="dwn" (click)="Downloadimages(obj.material)">download</button>
+        </td>
+        <td><button class="view" (click)="openPrediction(obj.questionPaper)">view</button>
+          <button class="dwn" (click)="Downloadimages(obj.questionPaper)">download</button>
+        </td>
+         <td><a href="obj.videoLink" >{{obj.videoLink}}</a></td>
+      </tr>
+    </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+    <!-- <table>
       <th>MATERIALS</th>
       <th>QUESTION PAPERS</th>
       <th>VIDEO LINKS</th>
@@ -35,7 +63,8 @@
         </td>
          <td><a href="">click here</a></td>
       </tr>
-    </table>
+    </table> -->
   </section>
   <app-footer></app-footer>
 </div>
+
