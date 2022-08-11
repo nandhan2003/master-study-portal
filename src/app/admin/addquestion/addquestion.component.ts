@@ -104,6 +104,7 @@ await this.AddquestionSRV.GetListById(obj).subscribe((res: any) => {
     this.addquestionForm.patchValue({ subject:  res.data[0].fkIntsubSubjectId });
     this.addquestionForm.patchValue({ year:  res.data[0].year });
     this.fileLogo1 =  res.data[0].pdf;
+    this.onChange(res.data[0].fkIntsubCategoryId);
     // this.addquestionForm.patchValue({ year2:  res.data[0].year2 });
     // this.addquestionForm.patchValue({ year3:  res.data[0].year3 });
     // this.addquestionForm.patchValue({ subject:  res.data[0].subject });
@@ -147,7 +148,7 @@ await this.AddquestionSRV.GetListById(obj).subscribe((res: any) => {
 }
 
 onChange(event) {
-  // this.arryOfsubject =[];
+  this.arryOfsubject =[];
   console.log("lll----",event)
   try {
     var objData = {

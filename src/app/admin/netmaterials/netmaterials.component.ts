@@ -160,7 +160,7 @@ net(obj){
               icon: "success",
             })
             // this.arrayAllObjData=res.data[0];
-            this.router.navigate(['/netmaterials']);
+            this.router.navigate(['/netquestion']);
           } else {
             Swal.fire("Error!", res.message, "error");
             if (res.message === "Token Error") {

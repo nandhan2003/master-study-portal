@@ -56,8 +56,10 @@
                     </thead>
                     <tr *ngFor="let obj of arryOfItemData;let i = index">
                       <td>{{i+1}}</td>
-                      <td> {{obj.material}} </td>
-                      <td> {{obj.questionPaper}} </td>
+                      <!-- <td> {{obj.material}} </td> -->
+                      <td> <img class="imgicon" src="{{obj.material}}" onerror="src='../../../assets/dist/img/docorpdf.png';" alt=""></td>
+                      <td> <img class="imgicon" src="{{obj.questionPaper}}" onerror="src='../../../assets/dist/img/docorpdf.png';" alt=""></td>
+                      <!-- <td> {{obj.questionPaper}} </td> -->
                       <td> {{obj.videoLink}} </td>
                       <td>
                       <button class="btn5" (click)="onUpdate(obj)"><i class="fa fa-pencil" aria-hidden="true"></i></button>&nbsp;
