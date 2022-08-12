@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { AddquestionService} from '../_service/addquestion.service';
+import { Observable, Observer } from "rxjs";
 import Swal from "sweetalert2";
 
 @Component({
@@ -12,6 +13,9 @@ export class QuestionPapersComponent implements OnInit {
   // toggle1 = false;
   // toggle2 = false;
   arryOfItemData =[];
+  name = "Mr";
+  base64Image: any;
+
   
   constructor(private AddquestionSRV:AddquestionService,) { }
 
@@ -79,9 +83,25 @@ export class QuestionPapersComponent implements OnInit {
   
   
 Downloadimages(event){
-
+console.log("show iamge url ",event)
   if(event){
-    window.location.href =  event;
+    let imageUrl = event
+    
+
+  this.getBase64ImageFromURL(imageUrl).subscribe(base64data => {
+    console.log(base64data);
+    this.base64Image = "data:image/jpg;base64," + base64data;
+    // save image to disk
+    var link = document.createElement("a");
+
+    document.body.appendChild(link); // for Firefox
+
+    link.setAttribute("href", this.base64Image);
+    link.setAttribute("download", event.slice(30));
+    link.click();
+  });
+  
+  
   }else{
     // alert('No Image Found')
     Swal.fire({
@@ -107,6 +127,37 @@ openPrediction(event) {
       confirmButtonText: "Ok",
     });
   }
+}
+
+getBase64ImageFromURL(url: string) {
+  return Observable.create((observer: Observer<string>) => {
+    const img: HTMLImageElement = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = url;
+    if (!img.complete) {
+      img.onload = () => {
+        observer.next(this.getBase64Image(img));
+        observer.complete();
+      };
+      img.onerror = err => {
+        observer.error(err);
+      };
+    } else {
+      observer.next(this.getBase64Image(img));
+      observer.complete();
+    }
+  });
+}
+
+getBase64Image(img: HTMLImageElement) {
+  const canvas: HTMLCanvasElement = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  const ctx: CanvasRenderingContext2D = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+  const dataURL: string = canvas.toDataURL("image/png");
+
+  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
 
 }
