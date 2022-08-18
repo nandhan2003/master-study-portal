@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AddquestionService} from '../_service/addquestion.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { Observable, Observer } from "rxjs";
 import Swal from "sweetalert2";
 
 @Component({
@@ -17,6 +18,7 @@ export class MscSeme1Component implements OnInit {
 
   constructor(private activatedRoute:ActivatedRoute,
     private AddquestionSRV:AddquestionService,
+    private http: HttpClient,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -59,12 +61,45 @@ export class MscSeme1Component implements OnInit {
     }
   }
 
+  collapsibl(){
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    }
+  }
+  
+   downloadUrl(url: string, fileName: string) {
+    const a: any = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.style = 'display: none';
+    a.click();
+    a.remove();
+  };
+  
   Downloadimages(event){
-    console.log("yyy--",event)
+    console.log("event =-- -0----",event)
     if(event){
-      window.location.href =  event.logoUrl;
+      this.http.get(event, { responseType: 'blob' }).subscribe(val => {
+        console.log(val);
+        const url = URL.createObjectURL(val);
+        var filteredUrl = event.slice(0,32)
+        this.downloadUrl(url, filteredUrl);
+        URL.revokeObjectURL(url);
+      });
+
     }else{
-      // alert('No Image Found')
       Swal.fire({
         title: "Error",
         text: "No Image Found",
@@ -73,6 +108,52 @@ export class MscSeme1Component implements OnInit {
       });
     }
   }
-  
+
+openPrediction(event) {
+  console.log("yyy--",event)
+ 
+  if(event){
+    window.open(event);
+  }else{
+    // alert('No Image Found')
+    Swal.fire({
+      title: "Error",
+      text: "No Image Found",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
+  }
+}
+
+getBase64ImageFromURL(url: string) {
+  return Observable.create((observer: Observer<string>) => {
+    const img: HTMLImageElement = new Image();
+    img.crossOrigin = "Anonymous";
+    img.src = url;
+    if (!img.complete) {
+      img.onload = () => {
+        observer.next(this.getBase64Image(img));
+        observer.complete();
+      };
+      img.onerror = err => {
+        observer.error(err);
+      };
+    } else {
+      observer.next(this.getBase64Image(img));
+      observer.complete();
+    }
+  });
+}
+
+getBase64Image(img: HTMLImageElement) {
+  const canvas: HTMLCanvasElement = document.createElement("canvas");
+  canvas.width = img.width;
+  canvas.height = img.height;
+  const ctx: CanvasRenderingContext2D = canvas.getContext("2d");
+  ctx.drawImage(img, 0, 0);
+  const dataURL: string = canvas.toDataURL("image/png");
+
+  return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
 
 }

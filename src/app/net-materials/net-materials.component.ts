@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { NetService }from '../_service/net.service';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { NetService }from '../_service/net.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import Swal from "sweetalert2";
 import { FormBuilder,Validators,FormGroup,ValidationErrors} from '@angular/forms';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Observable, Observer } from "rxjs";
 
 @Component({
@@ -21,6 +20,7 @@ export class NetMaterialsComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private NetSRV:NetService,
+    private http: HttpClient,
   ) { }
 
   ngOnInit(): void {
@@ -58,98 +58,100 @@ export class NetMaterialsComponent implements OnInit {
     } catch (error) {
     }
 }
+collapsibl(){
+  var coll = document.getElementsByClassName("collapsible");
+  var i;
 
-
-Downloadimages(event){
-  console.log("show iamge url ",event)
-    if(event){
-      let imageUrl = event
-      
-  
-    this.getBase64ImageFromURL(imageUrl).subscribe(base64data => {
-      console.log(base64data);
-      this.base64Image = "data:image/jpeg;base64," + base64data;
-      // save image to disk
-      var link = document.createElement("a");
-  
-      document.body.appendChild(link); // for Firefox
-  
-      link.setAttribute("href", this.base64Image);
-      link.setAttribute("download", event.slice(30));
-      link.click();
-    });
-    
-    
-    }else{
-      // alert('No Image Found')
-      Swal.fire({
-        title: "Error",
-        text: "No Image Found",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-    }
-  }
-  
-  openPrediction(event) {
-    console.log("yyy--",event)
-   
-    if(event){
-      window.open(event);
-    }else{
-      // alert('No Image Found')
-      Swal.fire({
-        title: "Error",
-        text: "No Image Found",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-    }
-  }
-  
-  getBase64ImageFromURL(url: string) {
-    return Observable.create((observer: Observer<string>) => {
-      const img: HTMLImageElement = new Image();
-      img.crossOrigin = "Anonymous";
-      img.src = url;
-      if (!img.complete) {
-        img.onload = () => {
-          observer.next(this.getBase64Image(img));
-          observer.complete();
-        };
-        img.onerror = err => {
-          observer.error(err);
-        };
+  for (i = 0; i < coll.length; i++) {
+    coll[i].addEventListener("click", function() {
+      this.classList.toggle("active");
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
       } else {
-        observer.next(this.getBase64Image(img));
-        observer.complete();
+        content.style.display = "block";
       }
     });
   }
-  
-  getBase64Image(img: HTMLImageElement) {
-    const canvas: HTMLCanvasElement = document.createElement("canvas");
-    canvas.width = img.width;
-    canvas.height = img.height;
-    const ctx: CanvasRenderingContext2D = canvas.getContext("2d");
-    ctx.drawImage(img, 0, 0);
-    const dataURL: string = canvas.toDataURL("image/png");
-  
-    return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
-  }
+}
 
-  videoLink(event){
-    console.log("sdsa =----",event)
-    if(event){
-      window.open(event);
-    }else{
-      Swal.fire({
-        title: "Error",
-        text: "No Image Found",
-        icon: "error",
-        confirmButtonText: "Ok",
-      });
-    }
+
+downloadUrl(url: string, fileName: string) {
+  const a: any = document.createElement('a');
+  a.href = url;
+  a.download = fileName;
+  document.body.appendChild(a);
+  a.style = 'display: none';
+  a.click();
+  a.remove();
+};
+
+Downloadimages(event){
+  if(event){
+    this.http.get(event, { responseType: 'blob' }).subscribe(val => {
+      console.log(val);
+      const url = URL.createObjectURL(val);
+      var filteredUrl = event.slice(0,32)
+      this.downloadUrl(url, filteredUrl);
+      URL.revokeObjectURL(url);
+    });
+
+  }else{
+    Swal.fire({
+      title: "Error",
+      text: "No Image Found",
+      icon: "error",
+      confirmButtonText: "Ok",
+    });
   }
+}
+
+openPrediction(event) {
+console.log("yyy--",event)
+
+if(event){
+  window.open(event);
+}else{
+  // alert('No Image Found')
+  Swal.fire({
+    title: "Error",
+    text: "No Image Found",
+    icon: "error",
+    confirmButtonText: "Ok",
+  });
+}
+}
+
+getBase64ImageFromURL(url: string) {
+return Observable.create((observer: Observer<string>) => {
+  const img: HTMLImageElement = new Image();
+  img.crossOrigin = "Anonymous";
+  img.src = url;
+  if (!img.complete) {
+    img.onload = () => {
+      observer.next(this.getBase64Image(img));
+      observer.complete();
+    };
+    img.onerror = err => {
+      observer.error(err);
+    };
+  } else {
+    observer.next(this.getBase64Image(img));
+    observer.complete();
+  }
+});
+}
+
+getBase64Image(img: HTMLImageElement) {
+const canvas: HTMLCanvasElement = document.createElement("canvas");
+canvas.width = img.width;
+canvas.height = img.height;
+const ctx: CanvasRenderingContext2D = canvas.getContext("2d");
+ctx.drawImage(img, 0, 0);
+const dataURL: string = canvas.toDataURL("image/png");
+
+return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+}
 
 }
+

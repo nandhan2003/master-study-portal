@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { AddquestionService} from '../_service/addquestion.service';
 import { Observable, Observer } from "rxjs";
 import Swal from "sweetalert2";
+
 @Component({
   selector: 'app-question-papers',
   templateUrl: './question-papers.component.html',
