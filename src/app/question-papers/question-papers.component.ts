@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 import { AddquestionService} from '../_service/addquestion.service';
 import { Observable, Observer } from "rxjs";
 import Swal from "sweetalert2";
-
 @Component({
   selector: 'app-question-papers',
   templateUrl: './question-papers.component.html',
@@ -17,7 +16,12 @@ export class QuestionPapersComponent implements OnInit {
   base64Image: any;
 
   
-  constructor(private AddquestionSRV:AddquestionService,) { }
+  constructor(private AddquestionSRV:AddquestionService,
+    private http: HttpClient,
+    // private rs: RequestService,
+    //   private http: Http,
+    //   private sanitizer: DomSanitizer
+    ) { }
 
   ngOnInit(): void {
     
@@ -40,7 +44,7 @@ export class QuestionPapersComponent implements OnInit {
       }
       console.log("objData=----",objData)
       this.AddquestionSRV.GetAllQuestionGroupData(objData).subscribe((res: any) => {
-        console.log("arryOfItemData   %%%%%%%%%%%%%%%%%%%%%%%%----",res)
+        console.log("arryOfItemData   %%%%%%%%%%%%%%%%%%%%%%%%----",res.data)
         if (res && res.success === true) {
 
           this.arryOfItemData = res.data[0];
@@ -59,7 +63,7 @@ export class QuestionPapersComponent implements OnInit {
     });
     } catch (error) {
     }
-}
+  }
 
 
 
@@ -81,37 +85,35 @@ export class QuestionPapersComponent implements OnInit {
     }
   }
   
+   downloadUrl(url: string, fileName: string) {
+    const a: any = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    document.body.appendChild(a);
+    a.style = 'display: none';
+    a.click();
+    a.remove();
+  };
   
-Downloadimages(event){
-console.log("show iamge url ",event)
-  if(event){
-    let imageUrl = event
-    
+  Downloadimages(event){
+    if(event){
+      this.http.get(event, { responseType: 'blob' }).subscribe(val => {
+        console.log(val);
+        const url = URL.createObjectURL(val);
+        var filteredUrl = event.slice(0,32)
+        this.downloadUrl(url, filteredUrl);
+        URL.revokeObjectURL(url);
+      });
 
-  this.getBase64ImageFromURL(imageUrl).subscribe(base64data => {
-    console.log(base64data);
-    this.base64Image = "data:image/jpg;base64," + base64data;
-    // save image to disk
-    var link = document.createElement("a");
-
-    document.body.appendChild(link); // for Firefox
-
-    link.setAttribute("href", this.base64Image);
-    link.setAttribute("download", event.slice(30));
-    link.click();
-  });
-  
-  
-  }else{
-    // alert('No Image Found')
-    Swal.fire({
-      title: "Error",
-      text: "No Image Found",
-      icon: "error",
-      confirmButtonText: "Ok",
-    });
+    }else{
+      Swal.fire({
+        title: "Error",
+        text: "No Image Found",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    }
   }
-}
 
 openPrediction(event) {
   console.log("yyy--",event)

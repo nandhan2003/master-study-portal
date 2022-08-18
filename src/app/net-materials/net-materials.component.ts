@@ -138,4 +138,18 @@ Downloadimages(event){
     return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
   }
 
+  videoLink(event){
+    console.log("sdsa =----",event)
+    if(event){
+      window.open(event);
+    }else{
+      Swal.fire({
+        title: "Error",
+        text: "No Image Found",
+        icon: "error",
+        confirmButtonText: "Ok",
+      });
+    }
+  }
+
 }
