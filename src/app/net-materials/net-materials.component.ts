@@ -153,5 +153,10 @@ const dataURL: string = canvas.toDataURL("image/png");
 return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
 }
 
+videoLink(event){
+  console.log("link--",event)
+  this.router.navigateByUrl(event);
+
+}
 }
 
