@@ -67,4 +67,11 @@ export class AddquestionService {
       .map(res => res.json())
       .catch(this.https.hamdleError);
   }
+
+
+  getCustomerDataByEmail(value) {
+    return this.https.post('/api/email/GetCustomerByEmail', value)
+      .map(res => res.json())
+      .catch(this.https.hamdleError);
+  }
 }

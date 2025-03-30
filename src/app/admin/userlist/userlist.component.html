@@ -9,9 +9,9 @@
       <div class="col-md-12 ">
         <div class="card ">
           <div class="cardHedr">
-            Users
+           Registerd Users
             <div class="pull-right">
-              <button class="btn2" (click)="onCreate()">Create User</button>
+              <!-- <button class="btn2" (click)="onCreate()">Create User</button> -->
             </div>
           </div>
           <div class="card-body ">
@@ -70,7 +70,7 @@
                       </thead>
                       <tr *ngFor="let obj of arryallUserData;let i = index">
                         <td>{{i+1}}</td>
-                        <td> {{obj.userName}} </td>
+                        <td> {{obj.name}} </td>
                         <td> {{obj.email}} </td>
                         <td> {{obj.mobile}} </td>
                       </tr>

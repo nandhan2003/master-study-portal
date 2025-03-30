@@ -165,10 +165,9 @@
       </button>
       <div class="collapse navbar-collapse justify-content-end">
 
-        <button  (click)="logout()"  class="Logoutbtn">
-
-          Logout
-         </button>
+        <!-- <button    class="Logoutbtn"> -->
+            <a [routerLink]="['/home']" class="nav-link  navlink Logoutbtn" >Logout</a>
+         <!-- </button> -->
           <!-- [routerLink]="['/signin']" -->
           <!-- <ul class="navbar-nav" >
 

@@ -96,28 +96,103 @@ export class QuestionPapersComponent implements OnInit {
     a.remove();
   };
   
-  Downloadimages(event){
-    if(event){
-      this.http.get(event, { responseType: 'blob' }).subscribe(val => {
-        console.log(val);
-        const url = URL.createObjectURL(val);
-        var filteredUrl = event.slice(0,32)
-        this.downloadUrl(url, filteredUrl);
-        URL.revokeObjectURL(url);
-      });
+  // Downloadimages(event){
+  //   if(event){
+  //     this.http.get(event, { responseType: 'blob' }).subscribe(val => {
+  //       console.log(val);
+  //       const url = URL.createObjectURL(val);
+  //       var filteredUrl = event.slice(0,32)
+  //       this.downloadUrl(url, filteredUrl);
+  //       URL.revokeObjectURL(url);
+  //     });
 
-    }else{
+  //   }else{
+  //     Swal.fire({
+  //       title: "Error",
+  //       text: "No Image Found",
+  //       icon: "error",
+  //       confirmButtonText: "Ok",
+  //     });
+  //   }
+  // }
+
+    Downloadimages(event: string) {
       Swal.fire({
-        title: "Error",
-        text: "No Image Found",
-        icon: "error",
-        confirmButtonText: "Ok",
+        title: "Enter Your Registered Email",
+        input: "email",
+        inputPlaceholder: "Enter your email",
+        showCancelButton: true,
+        confirmButtonText: "Submit",
+        preConfirm: (email) => {
+          if (!email) {
+            Swal.showValidationMessage("Email is required!");
+          }
+          return email;
+        }
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const email = result.value;
+          this.loadCustomer({ email },event);
+        }
       });
     }
-  }
+    
+    loadCustomer(Obj, event) {
+      try {
+        var objData = {
+          email: Obj.email,
+        };
+        console.log("objData---", objData);
+    
+        this.AddquestionSRV.getCustomerDataByEmail(objData).subscribe(
+          (res: any) => {
+            console.log("res---", res);
+    
+            // Check if res.data exists and is an array with valid entries
+            if (res?.data?.length > 0 && res?.data[0]?.length > 0 && res?.data[0][0]?._id) {
+              // Proceed with download
+              if (event) {
+                this.http.get(event, { responseType: "blob" }).subscribe((val) => {
+                  const url = URL.createObjectURL(val);
+                  const filteredUrl = event.slice(0, 32);
+                  this.downloadUrl(url, filteredUrl);
+                  URL.revokeObjectURL(url);
+                });
+              } else {
+                Swal.fire({
+                  title: "Error",
+                  text: "No Image Found",
+                  icon: "error",
+                  confirmButtonText: "Ok",
+                });
+              }
+            } else {
+              // Show warning if no data found
+              Swal.fire({
+                title: "Warning",
+                text: "To download the data, you need to register your email!",
+                icon: "warning",
+                confirmButtonText: "Ok",
+              });
+            }
+          },
+          (error) => {
+            console.error("Error fetching data:", error);
+            Swal.fire({
+              title: "Error",
+              text: "Something went wrong! Please try again later.",
+              icon: "error",
+              confirmButtonText: "Ok",
+            });
+          }
+        );
+      } catch (error) {
+        console.error("Unexpected error:", error);
+      }
+    }
+    
 
 openPrediction(event) {
-  console.log("yyy--",event)
  
   if(event){
     window.open(event);
